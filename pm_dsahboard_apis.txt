@@ -1,0 +1,189 @@
+Pironman APIs
+=============
+
+/get-version
+/get-device-info
+/test
+/test-mqtt
+/get-data
+/get-history
+/get-time-range
+/get-config
+/get-log-list
+/get-log
+/get-default-on
+/get-disk-list
+/get-network-interface-list
+
+/set-temperature-unit
+/set-shutdown-percentage
+/set-fan-led
+/set-fan-mode
+/set-rgb-brightness
+/set-rgb-color
+/set-rgb-enable
+/set-rgb-led-count
+/set-rgb-style
+/set-rgb-speed
+/set-oled-sleep-timeout
+/set-oled-enable
+/set-oled-disk
+/set-oled-network-interface
+/set-oled-rotation
+
+/clear-history
+/delete-log-file
+/start-ups-power-failure-simulation
+/get-ups-power-failure-simulation
+
+
+http://192.168.1.62:34001/api/v1.0/get-config
+{
+    "data": {
+        "system": {
+            "data_interval": 10,
+            "debug_level": "INFO",
+            "gpio_fan_led": "follow",
+            "gpio_fan_led_pin": 5,
+            "gpio_fan_mode": 2,
+            "gpio_fan_pin": 6,
+            "oled_disk": "/dev/nvme0n1",
+            "oled_enable": true,
+            "oled_network_interface": "end0",
+            "oled_rotation": 180,
+            "oled_sleep_timeout": 0,
+            "rgb_brightness": 48,
+            "rgb_color": "#0a1aff",
+            "rgb_enable": true,
+            "rgb_led_count": 4,
+            "rgb_speed": 25,
+            "rgb_style": "rainbow",
+            "temperature_unit": "C",
+            "vibration_switch_pin": 26,
+            "vibration_switch_pull_up": false
+        }
+    },
+    "status": true
+}
+
+
+
+
+OLED
+----
+
+http://192.168.1.62:34001/api/v1.0/set-oled-enable
+
+Payload : {enable: false}
+
+
+http://192.168.1.62:34001/api/v1.0/set-oled-sleep-timeout
+
+{"timeout":120}
+
+
+
+
+RGB Led
+-------
+
+http://192.168.1.62:34001/api/v1.0/set-rgb-enable
+
+Payload : 	
+        {enable: false}
+		{enable: true}
+
+RGB Style
+---------
+
+http://192.168.1.62:34001/api/v1.0/set-rgb-style
+
+Payload : 	
+        {"style":"solid"}
+		{"style":"breathing"}
+		{"style":"flow"}
+		{"style":"flow_reverse"}
+		{"style":"rainbow"}
+		{"style":"rainbow_reverse"}
+		{"style":"hue_cycle"}
+		{"style":""}
+
+
+
+Fan Led
+-------
+
+http://192.168.1.62:34001/api/v1.0/set-fan-led
+
+Payloads : 	
+        {"led":"on"}
+		{"led":"off"}
+		{"led":"follow"}
+
+
+GPIO Fan Mode
+-------------
+
+http://192.168.1.62:34001/api/v1.0/set-fan-mode 
+
+Payloads : 	
+        {"fan_mode":"4"}	-- Quite
+		{"fan_mode":"3"}	-- Balanced
+		{"fan_mode":"2"}	-- Cool
+		{"fan_mode":"1"}	-- Performance
+		{"fan_mode":"0"}	-- Always On
+
+
+Disks
+-----
+
+http://192.168.1.162:34001/api/v1.0/get-disk-list 
+
+Response : {"data":["/dev/nvme0n1","/dev/sda","/dvev/mmcblk0"],"status":true}
+
+
+http://192.168.1.162:34001/api/v1.0/set-oled-disk
+
+Payload	: 
+        {"disk": "/dev/nvme0n1/" }
+		{"disk": "total" }
+
+
+Networks
+--------
+
+http://192.168.1.62:34001/api/v1.0/get-network-interface-list
+
+{
+    "data": [
+        "end0",
+        "lxcbr0",
+        "br-2c67c97347e3",
+        "br-41439c020204",
+        "docker0",
+        "br-4e7b020d7ec1",
+        "tailscale0"
+    ],
+    "status": true
+}
+
+
+
+
+Logs
+----
+
+http://192.168.1.62:34001/api/v1.0/get-log-list
+
+http://192.168.1.62:34001/api/v1.0/get-log?filename=pm_dashboard.pm_dashboard.log&filter=&lines=1000&level=DEBUG
+
+http://192.168.1.62:34001/api/v1.0/get-log?filename=pm_dashboard.database.log&filter=&lines=1000&level=DEBUG
+
+http://192.168.1.62:34001/api/v1.0/get-log?filename=pm_dashboard.data_logger.log&filter=&lines=1000&level=DEBUG
+
+http://192.168.1.62:34001/api/v1.0/get-log?filename=pm_auto.ws2812.log&filter=&lines=1000&level=DEBUG
+
+http://192.168.1.62:34001/api/v1.0/get-log?filename=pm_auto.vibration_switch.log&filter=&lines=1000&level=DEBUG
+
+
+

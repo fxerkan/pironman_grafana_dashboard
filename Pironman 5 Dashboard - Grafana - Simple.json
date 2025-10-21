@@ -64,7 +64,7 @@
       }
     ]
   },
-  "description": "Grafana Dashboard to showing the influxdb time series data populated by Pironman 5 (as an alternative of the pm_dashboard) by FXerkan.\nhttps://github.com/fxerkan",
+  "description": "Grafana Dashboard to showing the influxdb time series data populated by Pironman 5 (as an alternative of the pm_dashboard) by FXerkan.\nhttps://github.com/fxerkan/pironman_grafana_dashboard",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
@@ -4305,8 +4305,8 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "Pironman 5 Dashboard",
-  "uid": "adkv72c",
+  "title": "Pironman 5 Dashboard (Simple)",
+  "uid": "adkv72s",
   "version": 8,
   "weekStart": "",
   "id": null

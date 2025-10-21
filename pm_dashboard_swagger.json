@@ -1,0 +1,1356 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "PM Dashboard API",
+    "description": "Pironman Dashboard REST API - A simple server that provides a REST API and hosts a web page to display data from the Pironman Dashboard",
+    "version": "1.3.4",
+    "contact": {
+      "name": "SunFounder",
+      "email": "service@sunfounder.com",
+      "url": "https://www.sunfounder.com"
+    },
+    "license": {
+      "name": "GPL-2.0",
+      "url": "https://github.com/sunfounder/pm_dashboard/blob/main/LICENSE"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:34001/api/v1.0",
+      "description": "Local Pironman Dashboard Server"
+    }
+  ],
+  "paths": {
+    "/get-version": {
+      "get": {
+        "summary": "Get API version",
+        "description": "Returns the current version of the device/application",
+        "operationId": "getVersion",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "1.3.4"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-device-info": {
+      "get": {
+        "summary": "Get device information",
+        "description": "Returns comprehensive information about the device",
+        "operationId": "getDeviceInfo",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "version": {
+                          "type": "string"
+                        },
+                        "id": {
+                          "type": "string"
+                        },
+                        "app_name": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/test": {
+      "get": {
+        "summary": "Test endpoint",
+        "description": "Simple test endpoint to verify API is working",
+        "operationId": "test",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "type": "string",
+                      "example": "OK"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/test-mqtt": {
+      "get": {
+        "summary": "Test MQTT connection",
+        "description": "Tests MQTT connection with provided credentials",
+        "operationId": "testMqtt",
+        "parameters": [
+          {
+            "name": "host",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "MQTT broker hostname"
+          },
+          {
+            "name": "port",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "MQTT broker port"
+          },
+          {
+            "name": "username",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "MQTT username"
+          },
+          {
+            "name": "password",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "MQTT password"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "status": {
+                          "type": "boolean"
+                        },
+                        "error": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      }
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-data": {
+      "get": {
+        "summary": "Get current data",
+        "description": "Returns current system data or historical data based on configuration",
+        "operationId": "getData",
+        "parameters": [
+          {
+            "name": "n",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "Number of records to retrieve (when history is enabled)"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "data": {
+                      "type": "object"
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-history": {
+      "get": {
+        "summary": "Get historical data",
+        "description": "Returns historical system data",
+        "operationId": "getHistory",
+        "parameters": [
+          {
+            "name": "n",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            },
+            "description": "Number of historical records to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "data": {
+                      "type": "object"
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-time-range": {
+      "get": {
+        "summary": "Get data by time range",
+        "description": "Returns data within a specific time range (requires history to be enabled)",
+        "operationId": "getTimeRange",
+        "parameters": [
+          {
+            "name": "start",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Start time"
+          },
+          {
+            "name": "end",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "End time"
+          },
+          {
+            "name": "key",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Specific data key to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "data": {
+                      "type": "object"
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-config": {
+      "get": {
+        "summary": "Get configuration",
+        "description": "Returns the current system configuration",
+        "operationId": "getConfig",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "system": {
+                          "type": "object"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-log-list": {
+      "get": {
+        "summary": "Get list of log files",
+        "description": "Returns a list of available log files",
+        "operationId": "getLogList",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-log": {
+      "get": {
+        "summary": "Get log file content",
+        "description": "Returns the content of a specific log file",
+        "operationId": "getLog",
+        "parameters": [
+          {
+            "name": "filename",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Log file name"
+          },
+          {
+            "name": "lines",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 100
+            },
+            "description": "Number of lines to retrieve"
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comma-separated filter keywords"
+          },
+          {
+            "name": "level",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"],
+              "default": "INFO"
+            },
+            "description": "Minimum log level to retrieve"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "error": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-default-on": {
+      "get": {
+        "summary": "Get default on setting",
+        "description": "Returns the default on configuration",
+        "operationId": "getDefaultOn",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-disk-list": {
+      "get": {
+        "summary": "Get list of disks",
+        "description": "Returns a list of available disk drives",
+        "operationId": "getDiskList",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-network-interface-list": {
+      "get": {
+        "summary": "Get list of network interfaces",
+        "description": "Returns a list of available network interfaces",
+        "operationId": "getNetworkInterfaceList",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      },
+                      "example": ["eth0", "wlan0"]
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/set-temperature-unit": {
+      "post": {
+        "summary": "Set temperature unit",
+        "description": "Sets the temperature unit to Celsius or Fahrenheit",
+        "operationId": "setTemperatureUnit",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["unit"],
+                "properties": {
+                  "unit": {
+                    "type": "string",
+                    "enum": ["C", "F"],
+                    "description": "Temperature unit (C or F)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/set-shutdown-percentage": {
+      "post": {
+        "summary": "Set shutdown percentage",
+        "description": "Sets the battery percentage at which the system should shutdown",
+        "operationId": "setShutdownPercentage",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["shutdown-percentage"],
+                "properties": {
+                  "shutdown-percentage": {
+                    "type": "integer",
+                    "description": "Shutdown battery percentage threshold"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/set-fan-led": {
+      "post": {
+        "summary": "Set fan LED mode",
+        "description": "Sets the fan LED mode (on, off, or follow)",
+        "operationId": "setFanLed",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["led"],
+                "properties": {
+                  "led": {
+                    "type": "string",
+                    "enum": ["on", "off", "follow"],
+                    "description": "Fan LED mode"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/set-fan-mode": {
+      "post": {
+        "summary": "Set fan mode",
+        "description": "Sets the fan mode (0: Always On, 1: Performance, 2: Cool, 3: Balance, 4: Silent)",
+        "operationId": "setFanMode",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["fan_mode"],
+                "properties": {
+                  "fan_mode": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 4,
+                    "description": "Fan mode (0-4)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/set-rgb-brightness": {
+      "post": {
+        "summary": "Set RGB LED brightness",
+        "description": "Sets the brightness level of the RGB LEDs",
+        "operationId": "setRgbBrightness",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["brightness"],
+                "properties": {
+                  "brightness": {
+                    "type": "integer",
+                    "minimum": 0,
+                    "maximum": 100,
+                    "description": "RGB brightness (0-100)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/set-rgb-color": {
+      "post": {
+        "summary": "Set RGB LED color",
+        "description": "Sets the color of the RGB LEDs",
+        "operationId": "setRgbColor",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["color"],
+                "properties": {
+                  "color": {
+                    "type": "string",
+                    "pattern": "^#[0-9a-fA-F]{6}$",
+                    "description": "RGB color in hex format (e.g., #ff00ff)",
+                    "example": "#ff00ff"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/set-rgb-enable": {
+      "post": {
+        "summary": "Enable/disable RGB LEDs",
+        "description": "Enables or disables the RGB LEDs",
+        "operationId": "setRgbEnable",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["enable"],
+                "properties": {
+                  "enable": {
+                    "type": "boolean",
+                    "description": "Enable or disable RGB LEDs"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/set-rgb-led-count": {
+      "post": {
+        "summary": "Set RGB LED count",
+        "description": "Sets the number of RGB LEDs in the strip",
+        "operationId": "setRgbLedCount",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["led-count"],
+                "properties": {
+                  "led-count": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "description": "Number of RGB LEDs"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/set-rgb-style": {
+      "post": {
+        "summary": "Set RGB LED style",
+        "description": "Sets the animation style for the RGB LEDs",
+        "operationId": "setRgbStyle",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["style"],
+                "properties": {
+                  "style": {
+                    "type": "string",
+                    "description": "RGB LED animation style (e.g., rainbow, solid, breathing)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/set-rgb-speed": {
+      "post": {
+        "summary": "Set RGB LED animation speed",
+        "description": "Sets the animation speed for the RGB LEDs",
+        "operationId": "setRgbSpeed",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["speed"],
+                "properties": {
+                  "speed": {
+                    "type": "integer",
+                    "description": "RGB LED animation speed"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/set-oled-sleep-timeout": {
+      "post": {
+        "summary": "Set OLED sleep timeout",
+        "description": "Sets the timeout period before the OLED display goes to sleep",
+        "operationId": "setOledSleepTimeout",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["timeout"],
+                "properties": {
+                  "timeout": {
+                    "type": "integer",
+                    "description": "OLED sleep timeout in seconds"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/set-oled-enable": {
+      "post": {
+        "summary": "Enable/disable OLED display",
+        "description": "Enables or disables the OLED display",
+        "operationId": "setOledEnable",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["enable"],
+                "properties": {
+                  "enable": {
+                    "type": "boolean",
+                    "description": "Enable or disable OLED display"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/set-oled-disk": {
+      "post": {
+        "summary": "Set OLED disk to monitor",
+        "description": "Sets which disk the OLED should display information for",
+        "operationId": "setOledDisk",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["disk"],
+                "properties": {
+                  "disk": {
+                    "type": "string",
+                    "description": "Disk name (e.g., 'total', 'mmcblk0', 'nvme0n1')"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/set-oled-network-interface": {
+      "post": {
+        "summary": "Set OLED network interface to monitor",
+        "description": "Sets which network interface the OLED should display information for",
+        "operationId": "setOledNetworkInterface",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["interface"],
+                "properties": {
+                  "interface": {
+                    "type": "string",
+                    "description": "Network interface name (e.g., 'all', 'eth0', 'wlan0')"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/set-oled-rotation": {
+      "post": {
+        "summary": "Set OLED rotation",
+        "description": "Sets the rotation angle of the OLED display",
+        "operationId": "setOledRotation",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["rotation"],
+                "properties": {
+                  "rotation": {
+                    "type": "integer",
+                    "enum": [0, 180],
+                    "description": "OLED rotation angle (0 or 180 degrees)"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/clear-history": {
+      "post": {
+        "summary": "Clear history",
+        "description": "Clears all historical data (requires history to be enabled)",
+        "operationId": "clearHistory",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Clear history (alternative GET method)",
+        "description": "Clears all historical data (requires history to be enabled)",
+        "operationId": "clearHistoryGet",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/delete-log-file": {
+      "post": {
+        "summary": "Delete log file",
+        "description": "Deletes a specific log file",
+        "operationId": "deleteLogFile",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["filename"],
+                "properties": {
+                  "filename": {
+                    "type": "string",
+                    "description": "Name of the log file to delete"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/start-ups-power-failure-simulation": {
+      "post": {
+        "summary": "Start UPS power failure simulation",
+        "description": "Starts a simulation of a UPS power failure",
+        "operationId": "startUpsPowerFailureSimulation",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["time"],
+                "properties": {
+                  "time": {
+                    "type": "integer",
+                    "description": "Duration of power failure simulation"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Start UPS power failure simulation (alternative GET method)",
+        "description": "Starts a simulation of a UPS power failure",
+        "operationId": "startUpsPowerFailureSimulationGet",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SuccessResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/get-ups-power-failure-simulation": {
+      "post": {
+        "summary": "Get UPS power failure simulation status",
+        "description": "Returns the current status of the UPS power failure simulation",
+        "operationId": "getUpsPowerFailureSimulation",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "summary": "Get UPS power failure simulation status (alternative GET method)",
+        "description": "Returns the current status of the UPS power failure simulation",
+        "operationId": "getUpsPowerFailureSimulationGet",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "boolean",
+                      "example": true
+                    },
+                    "data": {
+                      "type": "object"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SuccessResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean",
+            "example": true
+          },
+          "data": {
+            "type": "string",
+            "example": "OK"
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "boolean",
+            "example": false
+          },
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "System Information",
+      "description": "Endpoints for retrieving system and device information"
+    },
+    {
+      "name": "Data",
+      "description": "Endpoints for retrieving system data and history"
+    },
+    {
+      "name": "Configuration",
+      "description": "Endpoints for getting and setting system configuration"
+    },
+    {
+      "name": "Logs",
+      "description": "Endpoints for managing and viewing log files"
+    },
+    {
+      "name": "Hardware Control",
+      "description": "Endpoints for controlling hardware components (RGB LEDs, OLED, Fan)"
+    },
+    {
+      "name": "UPS",
+      "description": "Endpoints for UPS (Uninterruptible Power Supply) management"
+    }
+  ]
+}
