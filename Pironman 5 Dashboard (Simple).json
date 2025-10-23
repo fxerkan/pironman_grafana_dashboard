@@ -64,10 +64,11 @@
       }
     ]
   },
-  "description": "Grafana Dashboard to showing the influxdb time series data populated by Pironman 5 (as an alternative of the pm_dashboard) by FXerkan.\nhttps://github.com/fxerkan/pironman_grafana_dashboard",
+  "description": "Grafana Dashboard to showing the influxdb time series data populated by Pironman 5 (as an alternative of the pm_dashboard) by FXerkan.\nhttps://github.com/fxerkan",
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
+  "id": null,
   "links": [],
   "panels": [
     {
@@ -162,7 +163,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "CPU Temp",
           "resultFormat": "time_series",
           "select": [
@@ -259,7 +260,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "CPU Temp",
           "resultFormat": "time_series",
           "select": [
@@ -1029,7 +1030,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "CPU Temp",
           "resultFormat": "time_series",
           "select": [
@@ -1131,7 +1132,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "CPU Temp",
           "resultFormat": "time_series",
           "select": [
@@ -1275,7 +1276,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "CPU Temp",
           "resultFormat": "time_series",
           "select": [
@@ -1372,7 +1373,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "CPU Temp",
           "resultFormat": "time_series",
           "select": [
@@ -1474,7 +1475,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "CPU Temp",
           "resultFormat": "time_series",
           "select": [
@@ -1618,14 +1619,14 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
-          "refId": "CPU Temp",
+          "policy": "default",
+          "refId": "GPU Temp",
           "resultFormat": "time_series",
           "select": [
             [
               {
                 "params": [
-                  "cpu_temperature"
+                  "gpu_temperature"
                 ],
                 "type": "field"
               },
@@ -1644,7 +1645,7 @@
           "tags": []
         }
       ],
-      "title": "CPU Temp",
+      "title": "GPU Temp",
       "type": "timeseries"
     },
     {
@@ -1712,6 +1713,10 @@
       "pluginVersion": "12.2.0",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB}"
+          },
           "groupBy": [],
           "limit": "1",
           "measurement": "history",
@@ -1731,11 +1736,7 @@
               }
             ]
           ],
-          "tags": [],
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          }
+          "tags": []
         }
       ],
       "title": "CPUs",
@@ -2208,6 +2209,10 @@
       "pluginVersion": "12.2.0",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB}"
+          },
           "groupBy": [],
           "limit": "1",
           "measurement": "history",
@@ -2227,11 +2232,7 @@
               }
             ]
           ],
-          "tags": [],
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          }
+          "tags": []
         }
       ],
       "title": "RAM",
@@ -2403,7 +2404,7 @@
             "spanNulls": false,
             "stacking": {
               "group": "A",
-              "mode": "normal"
+              "mode": "none"
             },
             "thresholdsStyle": {
               "mode": "area"
@@ -2654,6 +2655,10 @@
       "pluginVersion": "12.2.0",
       "targets": [
         {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "${DS_INFLUXDB}"
+          },
           "groupBy": [],
           "limit": "1",
           "measurement": "history",
@@ -2673,11 +2678,7 @@
               }
             ]
           ],
-          "tags": [],
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          }
+          "tags": []
         }
       ],
       "title": "Network",
@@ -3006,7 +3007,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "mounted",
           "resultFormat": "time_series",
           "select": [
@@ -3463,7 +3464,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "mounted",
           "resultFormat": "time_series",
           "select": [
@@ -3920,7 +3921,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "mounted",
           "resultFormat": "time_series",
           "select": [
@@ -4307,7 +4308,6 @@
   "timezone": "browser",
   "title": "Pironman 5 Dashboard (Simple)",
   "uid": "adkv72s",
-  "version": 8,
-  "weekStart": "",
-  "id": null
+  "version": 3,
+  "weekStart": ""
 }

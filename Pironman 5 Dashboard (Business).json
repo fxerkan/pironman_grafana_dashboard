@@ -74,6 +74,12 @@
       "version": ""
     },
     {
+      "type": "panel",
+      "id": "volkovlabs-variable-panel",
+      "name": "Business Variable",
+      "version": "4.1.0"
+    },
+    {
       "type": "datasource",
       "id": "yesoreyeram-infinity-datasource",
       "name": "Infinity",
@@ -100,7 +106,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": null,
   "links": [],
   "panels": [
     {
@@ -111,7 +116,7 @@
         "x": 0,
         "y": 0
       },
-      "id": 49,
+      "id": 64,
       "panels": [
         {
           "datasource": {
@@ -167,7 +172,7 @@
             "overrides": []
           },
           "gridPos": {
-            "h": 3,
+            "h": 6,
             "w": 3,
             "x": 0,
             "y": 1
@@ -211,7 +216,7 @@
                     "api": {
                       "contentType": "application/json",
                       "data": "{\"enable\":false}",
-                      "endpoint": "http://${prm_server_url}/api/v1.0/set-rgb-enable",
+                      "endpoint": "http://192.168.1.62:34001/api/v1.0/set-rgb-enable",
                       "headerParams": [],
                       "method": "POST",
                       "queryParams": []
@@ -235,7 +240,7 @@
                   "name": "OFF",
                   "placement": {
                     "height": 45,
-                    "left": 120,
+                    "left": 135,
                     "rotation": 0,
                     "top": 6,
                     "width": 65
@@ -258,7 +263,7 @@
                     "api": {
                       "contentType": "application/json",
                       "data": "{\"enable\":true}",
-                      "endpoint": "http://${prm_server_url}/api/v1.0/set-rgb-enable",
+                      "endpoint": "http://192.168.1.62:34001/api/v1.0/set-rgb-enable",
                       "headerParams": [],
                       "method": "POST",
                       "queryParams": []
@@ -283,7 +288,7 @@
                   "name": "ON",
                   "placement": {
                     "height": 45,
-                    "left": 48,
+                    "left": 56,
                     "rotation": 0,
                     "top": 6,
                     "width": 65
@@ -387,6 +392,435 @@
         },
         {
           "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "thresholdsStyle": {
+                  "mode": "color",
+                  "thresholds": []
+                }
+              },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "blue",
+                    "value": 10
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 40
+                  },
+                  {
+                    "color": "orange",
+                    "value": 60
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  },
+                  {
+                    "color": "purple",
+                    "value": 90
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 3,
+            "x": 3,
+            "y": 1
+          },
+          "id": 62,
+          "options": {
+            "alertCustomMessage": "",
+            "alwaysVisibleFilter": false,
+            "autoScroll": false,
+            "browserTabNamePattern": "",
+            "collapsedByDefault": false,
+            "customValue": false,
+            "displayMode": "slider",
+            "emptyValue": false,
+            "favorites": {
+              "enabled": false,
+              "storage": "browser"
+            },
+            "filter": false,
+            "groupSelection": false,
+            "header": true,
+            "isMinimizeForTable": false,
+            "isMinimizeViewShowCustomIcon": false,
+            "isPinTabsEnabled": false,
+            "isUseLocalTime": false,
+            "minimizeOutputFormat": "text",
+            "minimizeViewCustomIcon": "",
+            "minimizeViewNativeIcon": "gf-movepane-right",
+            "padding": 10,
+            "persistent": false,
+            "requestLatency": "low",
+            "saveSelectedGroup": false,
+            "saveSelectedGroupKey": "",
+            "selectedValues": {
+              "showSelected": false
+            },
+            "showGroupTotal": false,
+            "showLabel": false,
+            "showName": false,
+            "showResetButton": false,
+            "showTotal": false,
+            "statusSort": false,
+            "sticky": false,
+            "tabsInOrder": true,
+            "variable": "prm_rgb_style",
+            "wordBreak": "normal"
+          },
+          "pluginVersion": "4.1.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "-- Dashboard --"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "RGB Style",
+          "type": "volkovlabs-variable-panel"
+        },
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "thresholdsStyle": {
+                  "mode": "color",
+                  "thresholds": []
+                }
+              },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "blue",
+                    "value": 10
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 40
+                  },
+                  {
+                    "color": "orange",
+                    "value": 60
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  },
+                  {
+                    "color": "purple",
+                    "value": 90
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 3,
+            "x": 6,
+            "y": 1
+          },
+          "id": 60,
+          "options": {
+            "alertCustomMessage": "",
+            "alwaysVisibleFilter": false,
+            "autoScroll": false,
+            "browserTabNamePattern": "",
+            "collapsedByDefault": false,
+            "customValue": false,
+            "displayMode": "slider",
+            "emptyValue": false,
+            "favorites": {
+              "enabled": false,
+              "storage": "browser"
+            },
+            "filter": false,
+            "groupSelection": false,
+            "header": true,
+            "isMinimizeForTable": false,
+            "isMinimizeViewShowCustomIcon": false,
+            "isPinTabsEnabled": false,
+            "isUseLocalTime": false,
+            "minimizeOutputFormat": "text",
+            "minimizeViewCustomIcon": "",
+            "minimizeViewNativeIcon": "gf-movepane-right",
+            "padding": 10,
+            "persistent": false,
+            "requestLatency": "low",
+            "saveSelectedGroup": false,
+            "saveSelectedGroupKey": "",
+            "selectedValues": {
+              "showSelected": false
+            },
+            "showGroupTotal": false,
+            "showLabel": false,
+            "showName": false,
+            "showResetButton": false,
+            "showTotal": false,
+            "statusSort": false,
+            "sticky": false,
+            "tabsInOrder": true,
+            "variable": "prm_rgb_brightness",
+            "wordBreak": "normal"
+          },
+          "pluginVersion": "4.1.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "-- Dashboard --"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "RGB Brightness",
+          "type": "volkovlabs-variable-panel"
+        },
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "thresholdsStyle": {
+                  "mode": "color",
+                  "thresholds": []
+                }
+              },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "blue",
+                    "value": 10
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 40
+                  },
+                  {
+                    "color": "orange",
+                    "value": 60
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  },
+                  {
+                    "color": "purple",
+                    "value": 90
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 3,
+            "x": 9,
+            "y": 1
+          },
+          "id": 61,
+          "options": {
+            "alertCustomMessage": "",
+            "alwaysVisibleFilter": false,
+            "autoScroll": false,
+            "browserTabNamePattern": "",
+            "collapsedByDefault": false,
+            "customValue": false,
+            "displayMode": "slider",
+            "emptyValue": false,
+            "favorites": {
+              "enabled": false,
+              "storage": "browser"
+            },
+            "filter": false,
+            "groupSelection": false,
+            "header": true,
+            "isMinimizeForTable": false,
+            "isMinimizeViewShowCustomIcon": false,
+            "isPinTabsEnabled": false,
+            "isUseLocalTime": false,
+            "minimizeOutputFormat": "text",
+            "minimizeViewCustomIcon": "",
+            "minimizeViewNativeIcon": "gf-movepane-right",
+            "padding": 10,
+            "persistent": false,
+            "requestLatency": "low",
+            "saveSelectedGroup": false,
+            "saveSelectedGroupKey": "",
+            "selectedValues": {
+              "showSelected": false
+            },
+            "showGroupTotal": false,
+            "showLabel": false,
+            "showName": false,
+            "showResetButton": false,
+            "showTotal": false,
+            "statusSort": false,
+            "sticky": false,
+            "tabsInOrder": true,
+            "variable": "prm_rgb_speed",
+            "wordBreak": "normal"
+          },
+          "pluginVersion": "4.1.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "-- Dashboard --"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "RGB Speed",
+          "type": "volkovlabs-variable-panel"
+        },
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "thresholdsStyle": {
+                  "mode": "color",
+                  "thresholds": [
+                    {
+                      "image": "",
+                      "value": 0
+                    }
+                  ]
+                }
+              },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 40
+                  },
+                  {
+                    "color": "orange",
+                    "value": 60
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  },
+                  {
+                    "color": "purple",
+                    "value": 90
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 3,
+            "x": 12,
+            "y": 1
+          },
+          "id": 63,
+          "options": {
+            "alertCustomMessage": "",
+            "alwaysVisibleFilter": false,
+            "autoScroll": false,
+            "browserTabNamePattern": "",
+            "collapsedByDefault": false,
+            "customValue": true,
+            "displayMode": "minimize",
+            "emptyValue": false,
+            "favorites": {
+              "enabled": false,
+              "storage": "browser"
+            },
+            "filter": false,
+            "groupSelection": false,
+            "header": true,
+            "isMinimizeForTable": false,
+            "isMinimizeViewShowCustomIcon": false,
+            "isPinTabsEnabled": false,
+            "isUseLocalTime": false,
+            "minimizeOutputFormat": "text",
+            "minimizeViewCustomIcon": "",
+            "minimizeViewNativeIcon": "gf-movepane-right",
+            "padding": 10,
+            "persistent": false,
+            "requestLatency": "low",
+            "saveSelectedGroup": false,
+            "saveSelectedGroupKey": "",
+            "selectedValues": {
+              "showSelected": false
+            },
+            "showGroupTotal": false,
+            "showLabel": false,
+            "showName": false,
+            "showResetButton": false,
+            "showTotal": false,
+            "statusSort": false,
+            "sticky": false,
+            "tabsInOrder": true,
+            "variable": "prm_rgb_color",
+            "wordBreak": "normal"
+          },
+          "pluginVersion": "4.1.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "-- Dashboard --"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "RGB Color",
+          "type": "volkovlabs-variable-panel"
+        },
+        {
+          "datasource": {
             "type": "yesoreyeram-infinity-datasource",
             "uid": "${DS_PIRONMAN_API}"
           },
@@ -439,7 +873,7 @@
             "h": 3,
             "w": 3,
             "x": 3,
-            "y": 1
+            "y": 4
           },
           "id": 43,
           "options": {
@@ -478,7 +912,7 @@
                         ],
                         "method": "POST",
                         "queryParams": [],
-                        "url": "http://${prm_server_url}/api/v1.0/set-rgb-style"
+                        "url": "http://192.168.1.62:34001/api/v1.0/set-rgb-style"
                       },
                       "oneClick": true,
                       "title": "Set RGB Style --> \"${prm_rgb_style}\"",
@@ -621,265 +1055,6 @@
             "type": "yesoreyeram-infinity-datasource",
             "uid": "${DS_PIRONMAN_API}"
           },
-          "description": "Please do not forget to first select the value/option in the \"RGB Speed\" variable from the variables bar at the top to use the \"Change\" button.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
-              "mappings": [
-                {
-                  "options": {
-                    "0": {
-                      "color": "blue",
-                      "index": 4
-                    }
-                  },
-                  "type": "value"
-                },
-                {
-                  "options": {
-                    "from": 1,
-                    "result": {
-                      "color": "green",
-                      "index": 0
-                    },
-                    "to": 25
-                  },
-                  "type": "range"
-                },
-                {
-                  "options": {
-                    "from": 26,
-                    "result": {
-                      "color": "yellow",
-                      "index": 1
-                    },
-                    "to": 50
-                  },
-                  "type": "range"
-                },
-                {
-                  "options": {
-                    "from": 51,
-                    "result": {
-                      "color": "orange",
-                      "index": 2
-                    },
-                    "to": 75
-                  },
-                  "type": "range"
-                },
-                {
-                  "options": {
-                    "from": 75,
-                    "result": {
-                      "color": "red",
-                      "index": 3
-                    },
-                    "to": 100
-                  },
-                  "type": "range"
-                }
-              ],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": 0
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 3,
-            "w": 3,
-            "x": 6,
-            "y": 1
-          },
-          "id": 45,
-          "options": {
-            "inlineEditing": false,
-            "panZoom": false,
-            "root": {
-              "background": {
-                "color": {
-                  "fixed": "transparent"
-                },
-                "image": {
-                  "fixed": ""
-                }
-              },
-              "border": {
-                "color": {
-                  "fixed": "dark-green"
-                }
-              },
-              "constraint": {
-                "horizontal": "left",
-                "vertical": "top"
-              },
-              "elements": [
-                {
-                  "actions": [
-                    {
-                      "confirmation": "Are you sure want to change RGB Speed to \"${prm_rgb_speed}\"",
-                      "fetch": {
-                        "body": "{\"speed\": ${prm_rgb_speed:raw} }",
-                        "headers": [
-                          [
-                            "Content-Type",
-                            "application/json"
-                          ]
-                        ],
-                        "method": "POST",
-                        "queryParams": [],
-                        "url": "http://${prm_server_url}/api/v1.0/set-rgb-speed"
-                      },
-                      "oneClick": true,
-                      "title": "Set RGB Speed --> \"${prm_rgb_speed}\"",
-                      "type": "fetch"
-                    }
-                  ],
-                  "background": {
-                    "color": {
-                      "fixed": "blue"
-                    },
-                    "image": {
-                      "fixed": "",
-                      "mode": "fixed"
-                    }
-                  },
-                  "border": {
-                    "color": {
-                      "fixed": "dark-green"
-                    }
-                  },
-                  "config": {
-                    "align": "center",
-                    "color": {
-                      "fixed": "#000000"
-                    },
-                    "size": 16,
-                    "text": {
-                      "field": "",
-                      "fixed": "Change",
-                      "mode": "fixed"
-                    },
-                    "valign": "middle"
-                  },
-                  "constraint": {
-                    "horizontal": "left",
-                    "vertical": "top"
-                  },
-                  "links": [],
-                  "name": "Set",
-                  "placement": {
-                    "height": 40,
-                    "left": 105,
-                    "rotation": 0,
-                    "top": 7,
-                    "width": 89
-                  },
-                  "type": "metric-value"
-                },
-                {
-                  "background": {
-                    "color": {
-                      "fixed": "transparent"
-                    }
-                  },
-                  "border": {
-                    "color": {
-                      "fixed": "dark-green"
-                    }
-                  },
-                  "config": {
-                    "align": "center",
-                    "color": {
-                      "field": "rgb_speed",
-                      "fixed": "rgb(204, 204, 220)"
-                    },
-                    "size": 14,
-                    "text": {
-                      "field": "rgb_speed",
-                      "mode": "field"
-                    },
-                    "valign": "middle"
-                  },
-                  "constraint": {
-                    "horizontal": "left",
-                    "vertical": "top"
-                  },
-                  "links": [],
-                  "name": "Existing Config",
-                  "placement": {
-                    "height": 40,
-                    "left": 5,
-                    "rotation": 0,
-                    "top": 7,
-                    "width": 100
-                  },
-                  "type": "text"
-                }
-              ],
-              "name": "Element 1760687738966",
-              "placement": {
-                "height": 100,
-                "left": 0,
-                "rotation": 0,
-                "top": 0,
-                "width": 100
-              },
-              "type": "frame"
-            },
-            "showAdvancedTypes": false,
-            "tooltip": {
-              "disableForOneClick": false,
-              "mode": "single"
-            },
-            "zoomToContent": false
-          },
-          "pluginVersion": "12.2.0",
-          "targets": [
-            {
-              "columns": [
-                {
-                  "selector": "rgb_speed",
-                  "text": "",
-                  "type": "string"
-                }
-              ],
-              "datasource": {
-                "type": "yesoreyeram-infinity-datasource",
-                "uid": "${DS_PIRONMAN_API}"
-              },
-              "filters": [],
-              "format": "table",
-              "global_query_id": "",
-              "parser": "backend",
-              "refId": "rgb_style",
-              "root_selector": "data.system",
-              "source": "url",
-              "type": "json",
-              "url": "get-config",
-              "url_options": {
-                "data": "",
-                "method": "GET"
-              }
-            }
-          ],
-          "title": "RGB Speed",
-          "type": "canvas"
-        },
-        {
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "${DS_PIRONMAN_API}"
-          },
           "description": "Please do not forget to first select the value/option in the \"RGB Brightness\" variable from the variables bar at the top to use the \"Change\" button.",
           "fieldConfig": {
             "defaults": {
@@ -956,8 +1131,8 @@
           "gridPos": {
             "h": 3,
             "w": 3,
-            "x": 9,
-            "y": 1
+            "x": 6,
+            "y": 4
           },
           "id": 47,
           "options": {
@@ -1139,6 +1314,265 @@
             "type": "yesoreyeram-infinity-datasource",
             "uid": "${DS_PIRONMAN_API}"
           },
+          "description": "Please do not forget to first select the value/option in the \"RGB Speed\" variable from the variables bar at the top to use the \"Change\" button.",
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "0": {
+                      "color": "blue",
+                      "index": 4
+                    }
+                  },
+                  "type": "value"
+                },
+                {
+                  "options": {
+                    "from": 1,
+                    "result": {
+                      "color": "green",
+                      "index": 0
+                    },
+                    "to": 25
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 26,
+                    "result": {
+                      "color": "yellow",
+                      "index": 1
+                    },
+                    "to": 50
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 51,
+                    "result": {
+                      "color": "orange",
+                      "index": 2
+                    },
+                    "to": 75
+                  },
+                  "type": "range"
+                },
+                {
+                  "options": {
+                    "from": 75,
+                    "result": {
+                      "color": "red",
+                      "index": 3
+                    },
+                    "to": 100
+                  },
+                  "type": "range"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 3,
+            "x": 9,
+            "y": 4
+          },
+          "id": 45,
+          "options": {
+            "inlineEditing": false,
+            "panZoom": false,
+            "root": {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                },
+                "image": {
+                  "fixed": ""
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "elements": [
+                {
+                  "actions": [
+                    {
+                      "confirmation": "Are you sure want to change RGB Speed to \"${prm_rgb_speed}\"",
+                      "fetch": {
+                        "body": "{\"speed\": ${prm_rgb_speed:raw} }",
+                        "headers": [
+                          [
+                            "Content-Type",
+                            "application/json"
+                          ]
+                        ],
+                        "method": "POST",
+                        "queryParams": [],
+                        "url": "http://${prm_server_url}/api/v1.0/set-rgb-speed"
+                      },
+                      "oneClick": true,
+                      "title": "Set RGB Speed --> \"${prm_rgb_speed}\"",
+                      "type": "fetch"
+                    }
+                  ],
+                  "background": {
+                    "color": {
+                      "fixed": "blue"
+                    },
+                    "image": {
+                      "fixed": "",
+                      "mode": "fixed"
+                    }
+                  },
+                  "border": {
+                    "color": {
+                      "fixed": "dark-green"
+                    }
+                  },
+                  "config": {
+                    "align": "center",
+                    "color": {
+                      "fixed": "#000000"
+                    },
+                    "size": 16,
+                    "text": {
+                      "field": "",
+                      "fixed": "Change",
+                      "mode": "fixed"
+                    },
+                    "valign": "middle"
+                  },
+                  "constraint": {
+                    "horizontal": "left",
+                    "vertical": "top"
+                  },
+                  "links": [],
+                  "name": "Set",
+                  "placement": {
+                    "height": 40,
+                    "left": 105,
+                    "rotation": 0,
+                    "top": 7,
+                    "width": 89
+                  },
+                  "type": "metric-value"
+                },
+                {
+                  "background": {
+                    "color": {
+                      "fixed": "transparent"
+                    }
+                  },
+                  "border": {
+                    "color": {
+                      "fixed": "dark-green"
+                    }
+                  },
+                  "config": {
+                    "align": "center",
+                    "color": {
+                      "field": "rgb_speed",
+                      "fixed": "rgb(204, 204, 220)"
+                    },
+                    "size": 14,
+                    "text": {
+                      "field": "rgb_speed",
+                      "mode": "field"
+                    },
+                    "valign": "middle"
+                  },
+                  "constraint": {
+                    "horizontal": "left",
+                    "vertical": "top"
+                  },
+                  "links": [],
+                  "name": "Existing Config",
+                  "placement": {
+                    "height": 40,
+                    "left": 5,
+                    "rotation": 0,
+                    "top": 7,
+                    "width": 100
+                  },
+                  "type": "text"
+                }
+              ],
+              "name": "Element 1760687738966",
+              "placement": {
+                "height": 100,
+                "left": 0,
+                "rotation": 0,
+                "top": 0,
+                "width": 100
+              },
+              "type": "frame"
+            },
+            "showAdvancedTypes": false,
+            "tooltip": {
+              "disableForOneClick": false,
+              "mode": "single"
+            },
+            "zoomToContent": false
+          },
+          "pluginVersion": "12.2.0",
+          "targets": [
+            {
+              "columns": [
+                {
+                  "selector": "rgb_speed",
+                  "text": "",
+                  "type": "string"
+                }
+              ],
+              "datasource": {
+                "type": "yesoreyeram-infinity-datasource",
+                "uid": "${DS_PIRONMAN_API}"
+              },
+              "filters": [],
+              "format": "table",
+              "global_query_id": "",
+              "parser": "backend",
+              "refId": "rgb_style",
+              "root_selector": "data.system",
+              "source": "url",
+              "type": "json",
+              "url": "get-config",
+              "url_options": {
+                "data": "",
+                "method": "GET"
+              }
+            }
+          ],
+          "title": "RGB Speed",
+          "type": "canvas"
+        },
+        {
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_PIRONMAN_API}"
+          },
           "description": "Please do not forget to first select the value/option in the \"RGB Style\" variable from the variables bar at the top to use the \"Change\" button.\n\nSet RGB color fixed color only available if RGB Style = \"Solid\"",
           "fieldConfig": {
             "defaults": {
@@ -1162,7 +1596,7 @@
             "h": 3,
             "w": 3,
             "x": 12,
-            "y": 1
+            "y": 4
           },
           "id": 54,
           "options": {
@@ -1201,7 +1635,7 @@
                         ],
                         "method": "POST",
                         "queryParams": [],
-                        "url": "http://${prm_server_url}/api/v1.0/set-rgb-color"
+                        "url": "http://192.168.1.62:34001/api/v1.0/set-rgb-color"
                       },
                       "oneClick": true,
                       "title": "Set RGB Color --> \"${prm_rgb_color}\"",
@@ -1339,6 +1773,611 @@
           ],
           "title": "RGB Color",
           "type": "canvas"
+        }
+      ],
+      "title": "Settings - RGB",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 1
+      },
+      "id": 49,
+      "panels": [
+        {
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_PIRONMAN_API}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "0": {
+                      "color": "red",
+                      "index": 0,
+                      "text": "On"
+                    },
+                    "1": {
+                      "color": "green",
+                      "index": 1,
+                      "text": "Off"
+                    },
+                    "false": {
+                      "color": "red",
+                      "index": 3,
+                      "text": "Off"
+                    },
+                    "true": {
+                      "color": "green",
+                      "index": 2,
+                      "text": "On"
+                    }
+                  },
+                  "type": "value"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 3,
+            "x": 0,
+            "y": 2
+          },
+          "id": 37,
+          "options": {
+            "inlineEditing": false,
+            "panZoom": false,
+            "root": {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                },
+                "image": {
+                  "fixed": ""
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "elements": [
+                {
+                  "background": {
+                    "color": {
+                      "fixed": "transparent"
+                    }
+                  },
+                  "border": {
+                    "color": {
+                      "fixed": "dark-green"
+                    }
+                  },
+                  "config": {
+                    "align": "center",
+                    "api": {
+                      "contentType": "application/json",
+                      "data": "{\"enable\":false}",
+                      "endpoint": "http://192.168.1.62:34001/api/v1.0/set-oled-enable",
+                      "headerParams": [],
+                      "method": "POST",
+                      "queryParams": []
+                    },
+                    "color": {
+                      "fixed": "#F0F4FD"
+                    },
+                    "size": 14,
+                    "style": {
+                      "variant": "destructive"
+                    },
+                    "text": {
+                      "fixed": "OFF",
+                      "mode": "fixed"
+                    }
+                  },
+                  "constraint": {
+                    "horizontal": "left",
+                    "vertical": "top"
+                  },
+                  "name": "OLED Disable",
+                  "placement": {
+                    "height": 45,
+                    "left": 135,
+                    "rotation": 0,
+                    "top": 6,
+                    "width": 65
+                  },
+                  "type": "button"
+                },
+                {
+                  "background": {
+                    "color": {
+                      "fixed": "transparent"
+                    }
+                  },
+                  "border": {
+                    "color": {
+                      "fixed": "dark-green"
+                    }
+                  },
+                  "config": {
+                    "align": "center",
+                    "api": {
+                      "contentType": "application/json",
+                      "data": "{\"enable\":true}",
+                      "endpoint": "http://192.168.1.62:34001/api/v1.0/set-oled-enable",
+                      "headerParams": [],
+                      "method": "POST",
+                      "queryParams": []
+                    },
+                    "color": {
+                      "fixed": "#F0F4FD"
+                    },
+                    "size": 14,
+                    "style": {
+                      "variant": "success"
+                    },
+                    "text": {
+                      "fixed": "ON",
+                      "mode": "fixed"
+                    }
+                  },
+                  "connections": [],
+                  "constraint": {
+                    "horizontal": "left",
+                    "vertical": "top"
+                  },
+                  "name": "OLED Enable",
+                  "placement": {
+                    "height": 45,
+                    "left": 56,
+                    "rotation": 0,
+                    "top": 6,
+                    "width": 65
+                  },
+                  "type": "button"
+                },
+                {
+                  "background": {
+                    "color": {
+                      "field": "oled_enable",
+                      "fixed": "#D9D9D9"
+                    },
+                    "image": {
+                      "field": "oled_enable",
+                      "fixed": "",
+                      "mode": "field"
+                    }
+                  },
+                  "border": {
+                    "color": {
+                      "fixed": "dark-green"
+                    }
+                  },
+                  "config": {
+                    "align": "center",
+                    "color": {
+                      "fixed": "#000000"
+                    },
+                    "text": {
+                      "field": "oled_enable",
+                      "fixed": "",
+                      "mode": "field"
+                    },
+                    "valign": "middle"
+                  },
+                  "connections": [],
+                  "constraint": {
+                    "horizontal": "left",
+                    "vertical": "top"
+                  },
+                  "links": [],
+                  "name": "LED",
+                  "placement": {
+                    "height": 31,
+                    "left": 10,
+                    "rotation": 0,
+                    "top": 13,
+                    "width": 31
+                  },
+                  "type": "ellipse"
+                }
+              ],
+              "name": "Element 1760687738966",
+              "placement": {
+                "height": 100,
+                "left": 0,
+                "rotation": 0,
+                "top": 0,
+                "width": 100
+              },
+              "type": "frame"
+            },
+            "showAdvancedTypes": false,
+            "tooltip": {
+              "disableForOneClick": false,
+              "mode": "single"
+            },
+            "zoomToContent": false
+          },
+          "pluginVersion": "12.2.0",
+          "targets": [
+            {
+              "columns": [
+                {
+                  "selector": "oled_enable",
+                  "text": "",
+                  "type": "boolean"
+                }
+              ],
+              "datasource": {
+                "type": "yesoreyeram-infinity-datasource",
+                "uid": "${DS_PIRONMAN_API}"
+              },
+              "filters": [],
+              "format": "table",
+              "global_query_id": "",
+              "parser": "backend",
+              "refId": "configs",
+              "root_selector": "data.system",
+              "source": "url",
+              "type": "json",
+              "url": "get-config",
+              "url_options": {
+                "data": "",
+                "method": "GET"
+              }
+            }
+          ],
+          "title": "OLED",
+          "type": "canvas"
+        },
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "thresholdsStyle": {
+                  "mode": "color",
+                  "thresholds": []
+                }
+              },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "blue",
+                    "value": 10
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 40
+                  },
+                  {
+                    "color": "orange",
+                    "value": 60
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  },
+                  {
+                    "color": "purple",
+                    "value": 90
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 3,
+            "x": 3,
+            "y": 2
+          },
+          "id": 69,
+          "options": {
+            "alertCustomMessage": "",
+            "alwaysVisibleFilter": false,
+            "autoScroll": false,
+            "browserTabNamePattern": "",
+            "collapsedByDefault": false,
+            "customValue": false,
+            "displayMode": "slider",
+            "emptyValue": false,
+            "favorites": {
+              "enabled": false,
+              "storage": "browser"
+            },
+            "filter": false,
+            "groupSelection": false,
+            "header": true,
+            "isMinimizeForTable": false,
+            "isMinimizeViewShowCustomIcon": false,
+            "isPinTabsEnabled": false,
+            "isUseLocalTime": false,
+            "minimizeOutputFormat": "text",
+            "minimizeViewCustomIcon": "",
+            "minimizeViewNativeIcon": "gf-movepane-right",
+            "padding": 10,
+            "persistent": false,
+            "requestLatency": "low",
+            "saveSelectedGroup": false,
+            "saveSelectedGroupKey": "",
+            "selectedValues": {
+              "showSelected": false
+            },
+            "showGroupTotal": false,
+            "showLabel": false,
+            "showName": false,
+            "showResetButton": false,
+            "showTotal": false,
+            "statusSort": false,
+            "sticky": false,
+            "tabsInOrder": true,
+            "variable": "prm_oled_sleep_timeout",
+            "wordBreak": "normal"
+          },
+          "pluginVersion": "4.1.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "-- Dashboard --"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "OLED Sleep Timeout",
+          "type": "volkovlabs-variable-panel"
+        },
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "thresholdsStyle": {
+                  "mode": "color",
+                  "thresholds": [
+                    {
+                      "image": "",
+                      "value": 0
+                    }
+                  ]
+                }
+              },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 40
+                  },
+                  {
+                    "color": "orange",
+                    "value": 60
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  },
+                  {
+                    "color": "purple",
+                    "value": 90
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 3,
+            "x": 6,
+            "y": 2
+          },
+          "id": 67,
+          "options": {
+            "alertCustomMessage": "",
+            "alwaysVisibleFilter": false,
+            "autoScroll": false,
+            "browserTabNamePattern": "",
+            "collapsedByDefault": false,
+            "customValue": true,
+            "displayMode": "minimize",
+            "emptyValue": false,
+            "favorites": {
+              "enabled": false,
+              "storage": "browser"
+            },
+            "filter": false,
+            "groupSelection": false,
+            "header": true,
+            "isMinimizeForTable": false,
+            "isMinimizeViewShowCustomIcon": false,
+            "isPinTabsEnabled": false,
+            "isUseLocalTime": false,
+            "minimizeOutputFormat": "text",
+            "minimizeViewCustomIcon": "",
+            "minimizeViewNativeIcon": "gf-movepane-right",
+            "padding": 10,
+            "persistent": false,
+            "requestLatency": "low",
+            "saveSelectedGroup": false,
+            "saveSelectedGroupKey": "",
+            "selectedValues": {
+              "showSelected": false
+            },
+            "showGroupTotal": false,
+            "showLabel": false,
+            "showName": false,
+            "showResetButton": false,
+            "showTotal": false,
+            "statusSort": false,
+            "sticky": false,
+            "tabsInOrder": true,
+            "variable": "prm_oled_disk",
+            "wordBreak": "normal"
+          },
+          "pluginVersion": "4.1.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "-- Dashboard --"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "OLED Disc",
+          "type": "volkovlabs-variable-panel"
+        },
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "thresholdsStyle": {
+                  "mode": "color",
+                  "thresholds": [
+                    {
+                      "image": "",
+                      "value": 0
+                    }
+                  ]
+                }
+              },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 40
+                  },
+                  {
+                    "color": "orange",
+                    "value": 60
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  },
+                  {
+                    "color": "purple",
+                    "value": 90
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 3,
+            "x": 9,
+            "y": 2
+          },
+          "id": 68,
+          "options": {
+            "alertCustomMessage": "",
+            "alwaysVisibleFilter": false,
+            "autoScroll": false,
+            "browserTabNamePattern": "",
+            "collapsedByDefault": false,
+            "customValue": true,
+            "displayMode": "minimize",
+            "emptyValue": false,
+            "favorites": {
+              "enabled": false,
+              "storage": "browser"
+            },
+            "filter": false,
+            "groupSelection": false,
+            "header": true,
+            "isMinimizeForTable": false,
+            "isMinimizeViewShowCustomIcon": false,
+            "isPinTabsEnabled": false,
+            "isUseLocalTime": false,
+            "minimizeOutputFormat": "text",
+            "minimizeViewCustomIcon": "",
+            "minimizeViewNativeIcon": "gf-movepane-right",
+            "padding": 10,
+            "persistent": false,
+            "requestLatency": "low",
+            "saveSelectedGroup": false,
+            "saveSelectedGroupKey": "",
+            "selectedValues": {
+              "showSelected": false
+            },
+            "showGroupTotal": false,
+            "showLabel": false,
+            "showName": false,
+            "showResetButton": false,
+            "showTotal": false,
+            "statusSort": false,
+            "sticky": false,
+            "tabsInOrder": true,
+            "variable": "prm_oled_network",
+            "wordBreak": "normal"
+          },
+          "pluginVersion": "4.1.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "-- Dashboard --"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "OLED Network Interface",
+          "type": "volkovlabs-variable-panel"
         },
         {
           "datasource": {
@@ -1368,8 +2407,8 @@
           "gridPos": {
             "h": 3,
             "w": 3,
-            "x": 15,
-            "y": 1
+            "x": 12,
+            "y": 2
           },
           "id": 50,
           "options": {
@@ -1487,360 +2526,13 @@
             "type": "yesoreyeram-infinity-datasource",
             "uid": "${DS_PIRONMAN_API}"
           },
+          "description": "Please do not forget to first select the value/option in the \"OLED Rotation\" variable from the variables bar at the top to use the \"Change\" button.",
           "fieldConfig": {
             "defaults": {
               "color": {
                 "mode": "thresholds"
               },
-              "mappings": [
-                {
-                  "options": {
-                    "false": {
-                      "color": "red",
-                      "index": 0,
-                      "text": "Off"
-                    },
-                    "follow": {
-                      "color": "blue",
-                      "index": 2,
-                      "text": "Fllw"
-                    },
-                    "off": {
-                      "color": "red",
-                      "index": 4,
-                      "text": "Off"
-                    },
-                    "on": {
-                      "color": "green",
-                      "index": 3,
-                      "text": "On"
-                    },
-                    "true": {
-                      "color": "green",
-                      "index": 1,
-                      "text": "On"
-                    }
-                  },
-                  "type": "value"
-                }
-              ],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": 0
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 3,
-            "w": 6,
-            "x": 18,
-            "y": 1
-          },
-          "id": 39,
-          "options": {
-            "inlineEditing": false,
-            "panZoom": false,
-            "root": {
-              "background": {
-                "color": {
-                  "fixed": "transparent"
-                },
-                "image": {
-                  "field": "",
-                  "fixed": "",
-                  "mode": "fixed"
-                }
-              },
-              "border": {
-                "color": {
-                  "fixed": "dark-green"
-                }
-              },
-              "constraint": {
-                "horizontal": "left",
-                "vertical": "top"
-              },
-              "elements": [
-                {
-                  "background": {
-                    "color": {
-                      "fixed": "transparent"
-                    }
-                  },
-                  "border": {
-                    "color": {
-                      "fixed": "dark-green"
-                    }
-                  },
-                  "config": {
-                    "align": "center",
-                    "api": {
-                      "contentType": "application/json",
-                      "data": "{\"led\":\"off\"}",
-                      "endpoint": "http://${prm_server_url}/api/v1.0/set-fan-led",
-                      "headerParams": [],
-                      "method": "POST",
-                      "queryParams": []
-                    },
-                    "color": {
-                      "fixed": "#F0F4FD"
-                    },
-                    "size": 14,
-                    "style": {
-                      "variant": "destructive"
-                    },
-                    "text": {
-                      "fixed": "OFF",
-                      "mode": "fixed"
-                    }
-                  },
-                  "connections": [],
-                  "constraint": {
-                    "horizontal": "left",
-                    "vertical": "top"
-                  },
-                  "name": "OFF",
-                  "placement": {
-                    "height": 45,
-                    "left": 148,
-                    "rotation": 0,
-                    "top": 6,
-                    "width": 75
-                  },
-                  "type": "button"
-                },
-                {
-                  "background": {
-                    "color": {
-                      "fixed": "transparent"
-                    }
-                  },
-                  "border": {
-                    "color": {
-                      "fixed": "dark-green"
-                    }
-                  },
-                  "config": {
-                    "align": "center",
-                    "api": {
-                      "contentType": "application/json",
-                      "data": "{\"led\":\"on\"}",
-                      "endpoint": "http://${prm_server_url}/api/v1.0/set-fan-led",
-                      "headerParams": [],
-                      "method": "POST",
-                      "queryParams": []
-                    },
-                    "color": {
-                      "fixed": "#F0F4FD"
-                    },
-                    "size": 14,
-                    "style": {
-                      "variant": "success"
-                    },
-                    "text": {
-                      "fixed": "ON",
-                      "mode": "fixed"
-                    }
-                  },
-                  "connections": [],
-                  "constraint": {
-                    "horizontal": "left",
-                    "vertical": "top"
-                  },
-                  "name": "ON",
-                  "placement": {
-                    "height": 45,
-                    "left": 55,
-                    "rotation": 0,
-                    "top": 6,
-                    "width": 75
-                  },
-                  "type": "button"
-                },
-                {
-                  "background": {
-                    "color": {
-                      "fixed": "transparent"
-                    }
-                  },
-                  "border": {
-                    "color": {
-                      "fixed": "dark-green"
-                    }
-                  },
-                  "config": {
-                    "align": "center",
-                    "api": {
-                      "contentType": "application/json",
-                      "data": "{\"led\":\"follow\"}",
-                      "endpoint": "http://${prm_server_url}/api/v1.0/set-fan-led",
-                      "headerParams": [],
-                      "method": "POST",
-                      "queryParams": []
-                    },
-                    "color": {
-                      "fixed": "#F0F4FD"
-                    },
-                    "size": 14,
-                    "style": {
-                      "variant": "primary"
-                    },
-                    "text": {
-                      "field": "gpio_fan_led",
-                      "fixed": "Follow",
-                      "mode": "fixed"
-                    }
-                  },
-                  "constraint": {
-                    "horizontal": "left",
-                    "vertical": "top"
-                  },
-                  "name": "FOLLOW",
-                  "placement": {
-                    "height": 45,
-                    "left": 241,
-                    "rotation": 0,
-                    "top": 6,
-                    "width": 75
-                  },
-                  "type": "button"
-                },
-                {
-                  "background": {
-                    "color": {
-                      "field": "gpio_fan_led",
-                      "fixed": "#D9D9D9"
-                    },
-                    "image": {
-                      "field": "gpio_fan_led",
-                      "mode": "field"
-                    }
-                  },
-                  "border": {
-                    "color": {
-                      "fixed": "dark-green"
-                    }
-                  },
-                  "config": {
-                    "align": "center",
-                    "color": {
-                      "fixed": "#000000"
-                    },
-                    "text": {
-                      "field": "gpio_fan_led",
-                      "mode": "field"
-                    },
-                    "valign": "middle"
-                  },
-                  "connections": [],
-                  "constraint": {
-                    "horizontal": "left",
-                    "vertical": "top"
-                  },
-                  "links": [],
-                  "name": "LED",
-                  "placement": {
-                    "height": 35,
-                    "left": 8,
-                    "rotation": 0,
-                    "top": 11,
-                    "width": 35
-                  },
-                  "type": "ellipse"
-                }
-              ],
-              "name": "Element 1760687738966",
-              "placement": {
-                "height": 100,
-                "left": 0,
-                "rotation": 0,
-                "top": 0,
-                "width": 100
-              },
-              "type": "frame"
-            },
-            "showAdvancedTypes": false,
-            "tooltip": {
-              "disableForOneClick": false,
-              "mode": "none"
-            },
-            "zoomToContent": false
-          },
-          "pluginVersion": "12.2.0",
-          "targets": [
-            {
-              "columns": [
-                {
-                  "selector": "gpio_fan_led",
-                  "text": "",
-                  "type": "string"
-                }
-              ],
-              "datasource": {
-                "type": "yesoreyeram-infinity-datasource",
-                "uid": "${DS_PIRONMAN_API}"
-              },
-              "filters": [],
-              "format": "table",
-              "global_query_id": "",
-              "parser": "backend",
-              "refId": "A",
-              "root_selector": "data.system",
-              "source": "url",
-              "type": "json",
-              "url": "get-config",
-              "url_options": {
-                "data": "",
-                "method": "GET"
-              }
-            }
-          ],
-          "title": "Fan Led",
-          "type": "canvas"
-        },
-        {
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "${DS_PIRONMAN_API}"
-          },
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
-              "mappings": [
-                {
-                  "options": {
-                    "0": {
-                      "color": "red",
-                      "index": 0,
-                      "text": "On"
-                    },
-                    "1": {
-                      "color": "green",
-                      "index": 1,
-                      "text": "Off"
-                    },
-                    "false": {
-                      "color": "red",
-                      "index": 3,
-                      "text": "Off"
-                    },
-                    "true": {
-                      "color": "green",
-                      "index": 2,
-                      "text": "On"
-                    }
-                  },
-                  "type": "value"
-                }
-              ],
+              "mappings": [],
               "thresholds": {
                 "mode": "absolute",
                 "steps": [
@@ -1857,9 +2549,9 @@
             "h": 3,
             "w": 3,
             "x": 0,
-            "y": 4
+            "y": 5
           },
-          "id": 37,
+          "id": 48,
           "options": {
             "inlineEditing": false,
             "panZoom": false,
@@ -1897,8 +2589,8 @@
                     "align": "center",
                     "api": {
                       "contentType": "application/json",
-                      "data": "{\"enable\":false}",
-                      "endpoint": "http://${prm_server_url}/api/v1.0/set-oled-enable",
+                      "data": "{\"rotation\":180}",
+                      "endpoint": "http://192.168.1.62:34001/api/v1.0/set-oled-rotation",
                       "headerParams": [],
                       "method": "POST",
                       "queryParams": []
@@ -1911,18 +2603,19 @@
                       "variant": "destructive"
                     },
                     "text": {
-                      "fixed": "OFF",
+                      "fixed": "180 °",
                       "mode": "fixed"
                     }
                   },
+                  "connections": [],
                   "constraint": {
                     "horizontal": "left",
                     "vertical": "top"
                   },
-                  "name": "OLED Disable",
+                  "name": "180 Degree",
                   "placement": {
                     "height": 45,
-                    "left": 120,
+                    "left": 135,
                     "rotation": 0,
                     "top": 6,
                     "width": 65
@@ -1944,8 +2637,8 @@
                     "align": "center",
                     "api": {
                       "contentType": "application/json",
-                      "data": "{\"enable\":true}",
-                      "endpoint": "http://${prm_server_url}/api/v1.0/set-oled-enable",
+                      "data": "{\"rotation\":0}",
+                      "endpoint": "http://${prm_server_url}/api/v1.0/set-oled-rotation",
                       "headerParams": [],
                       "method": "POST",
                       "queryParams": []
@@ -1955,10 +2648,10 @@
                     },
                     "size": 14,
                     "style": {
-                      "variant": "success"
+                      "variant": "primary"
                     },
                     "text": {
-                      "fixed": "ON",
+                      "fixed": "0 °",
                       "mode": "fixed"
                     }
                   },
@@ -1967,10 +2660,10 @@
                     "horizontal": "left",
                     "vertical": "top"
                   },
-                  "name": "OLED Enable",
+                  "name": "0 Degree",
                   "placement": {
                     "height": 45,
-                    "left": 48,
+                    "left": 56,
                     "rotation": 0,
                     "top": 6,
                     "width": 65
@@ -1980,13 +2673,12 @@
                 {
                   "background": {
                     "color": {
-                      "field": "oled_enable",
-                      "fixed": "#D9D9D9"
+                      "fixed": "transparent"
                     },
                     "image": {
                       "field": "oled_enable",
                       "fixed": "",
-                      "mode": "field"
+                      "mode": "fixed"
                     }
                   },
                   "border": {
@@ -1997,11 +2689,12 @@
                   "config": {
                     "align": "center",
                     "color": {
-                      "fixed": "#000000"
+                      "field": "oled_rotation",
+                      "fixed": "rgb(204, 204, 220)"
                     },
+                    "size": 16,
                     "text": {
-                      "field": "oled_enable",
-                      "fixed": "",
+                      "field": "oled_rotation",
                       "mode": "field"
                     },
                     "valign": "middle"
@@ -2020,7 +2713,7 @@
                     "top": 13,
                     "width": 31
                   },
-                  "type": "ellipse"
+                  "type": "text"
                 }
               ],
               "name": "Element 1760687738966",
@@ -2045,9 +2738,9 @@
             {
               "columns": [
                 {
-                  "selector": "oled_enable",
+                  "selector": "oled_rotation",
                   "text": "",
-                  "type": "boolean"
+                  "type": "number"
                 }
               ],
               "datasource": {
@@ -2069,7 +2762,7 @@
               }
             }
           ],
-          "title": "OLED",
+          "title": "OLED Rotation",
           "type": "canvas"
         },
         {
@@ -2145,7 +2838,7 @@
             "h": 3,
             "w": 3,
             "x": 3,
-            "y": 4
+            "y": 5
           },
           "id": 53,
           "options": {
@@ -2327,247 +3020,6 @@
             "type": "yesoreyeram-infinity-datasource",
             "uid": "${DS_PIRONMAN_API}"
           },
-          "description": "Please do not forget to first select the value/option in the \"OLED Rotation\" variable from the variables bar at the top to use the \"Change\" button.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green",
-                    "value": 0
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 3,
-            "w": 3,
-            "x": 6,
-            "y": 4
-          },
-          "id": 48,
-          "options": {
-            "inlineEditing": false,
-            "panZoom": false,
-            "root": {
-              "background": {
-                "color": {
-                  "fixed": "transparent"
-                },
-                "image": {
-                  "fixed": ""
-                }
-              },
-              "border": {
-                "color": {
-                  "fixed": "dark-green"
-                }
-              },
-              "constraint": {
-                "horizontal": "left",
-                "vertical": "top"
-              },
-              "elements": [
-                {
-                  "background": {
-                    "color": {
-                      "fixed": "transparent"
-                    }
-                  },
-                  "border": {
-                    "color": {
-                      "fixed": "dark-green"
-                    }
-                  },
-                  "config": {
-                    "align": "center",
-                    "api": {
-                      "contentType": "application/json",
-                      "data": "{\"rotation\":180}",
-                      "endpoint": "http://${prm_server_url}/api/v1.0/set-oled-rotation",
-                      "headerParams": [],
-                      "method": "POST",
-                      "queryParams": []
-                    },
-                    "color": {
-                      "fixed": "#F0F4FD"
-                    },
-                    "size": 14,
-                    "style": {
-                      "variant": "destructive"
-                    },
-                    "text": {
-                      "fixed": "180 °",
-                      "mode": "fixed"
-                    }
-                  },
-                  "constraint": {
-                    "horizontal": "left",
-                    "vertical": "top"
-                  },
-                  "name": "180 Degree",
-                  "placement": {
-                    "height": 45,
-                    "left": 135,
-                    "top": 6,
-                    "width": 65
-                  },
-                  "type": "button"
-                },
-                {
-                  "background": {
-                    "color": {
-                      "fixed": "transparent"
-                    }
-                  },
-                  "border": {
-                    "color": {
-                      "fixed": "dark-green"
-                    }
-                  },
-                  "config": {
-                    "align": "center",
-                    "api": {
-                      "contentType": "application/json",
-                      "data": "{\"rotation\":0}",
-                      "endpoint": "http://${prm_server_url}/api/v1.0/set-oled-rotation",
-                      "headerParams": [],
-                      "method": "POST",
-                      "queryParams": []
-                    },
-                    "color": {
-                      "fixed": "#F0F4FD"
-                    },
-                    "size": 14,
-                    "style": {
-                      "variant": "primary"
-                    },
-                    "text": {
-                      "fixed": "0 °",
-                      "mode": "fixed"
-                    }
-                  },
-                  "connections": [],
-                  "constraint": {
-                    "horizontal": "left",
-                    "vertical": "top"
-                  },
-                  "name": "0 Degree",
-                  "placement": {
-                    "height": 45,
-                    "left": 56,
-                    "top": 6,
-                    "width": 65
-                  },
-                  "type": "button"
-                },
-                {
-                  "background": {
-                    "color": {
-                      "fixed": "transparent"
-                    },
-                    "image": {
-                      "field": "oled_enable",
-                      "fixed": "",
-                      "mode": "fixed"
-                    }
-                  },
-                  "border": {
-                    "color": {
-                      "fixed": "dark-green"
-                    }
-                  },
-                  "config": {
-                    "align": "center",
-                    "color": {
-                      "field": "oled_rotation",
-                      "fixed": "rgb(204, 204, 220)"
-                    },
-                    "size": 16,
-                    "text": {
-                      "field": "oled_rotation",
-                      "mode": "field"
-                    },
-                    "valign": "middle"
-                  },
-                  "connections": [],
-                  "constraint": {
-                    "horizontal": "left",
-                    "vertical": "top"
-                  },
-                  "links": [],
-                  "name": "LED",
-                  "placement": {
-                    "height": 31,
-                    "left": 10,
-                    "rotation": 0,
-                    "top": 13,
-                    "width": 31
-                  },
-                  "type": "text"
-                }
-              ],
-              "name": "Element 1760687738966",
-              "placement": {
-                "height": 100,
-                "left": 0,
-                "rotation": 0,
-                "top": 0,
-                "width": 100
-              },
-              "type": "frame"
-            },
-            "showAdvancedTypes": false,
-            "tooltip": {
-              "disableForOneClick": false,
-              "mode": "single"
-            },
-            "zoomToContent": false
-          },
-          "pluginVersion": "12.2.0",
-          "targets": [
-            {
-              "columns": [
-                {
-                  "selector": "oled_rotation",
-                  "text": "",
-                  "type": "number"
-                }
-              ],
-              "datasource": {
-                "type": "yesoreyeram-infinity-datasource",
-                "uid": "${DS_PIRONMAN_API}"
-              },
-              "filters": [],
-              "format": "table",
-              "global_query_id": "",
-              "parser": "backend",
-              "refId": "configs",
-              "root_selector": "data.system",
-              "source": "url",
-              "type": "json",
-              "url": "get-config",
-              "url_options": {
-                "data": "",
-                "method": "GET"
-              }
-            }
-          ],
-          "title": "OLED Rotation",
-          "type": "canvas"
-        },
-        {
-          "datasource": {
-            "type": "yesoreyeram-infinity-datasource",
-            "uid": "${DS_PIRONMAN_API}"
-          },
           "description": "Please do not forget to first select the value/option in the \"OLED Disk\" variable from the variables bar at the top to use the \"Change\" button.\n\nSets which Disc's capacity and usage information will be displayed on the OLED screen.",
           "fieldConfig": {
             "defaults": {
@@ -2590,8 +3042,8 @@
           "gridPos": {
             "h": 3,
             "w": 3,
-            "x": 9,
-            "y": 4
+            "x": 6,
+            "y": 5
           },
           "id": 51,
           "options": {
@@ -2795,8 +3247,8 @@
           "gridPos": {
             "h": 3,
             "w": 3,
-            "x": 12,
-            "y": 4
+            "x": 9,
+            "y": 5
           },
           "id": 52,
           "options": {
@@ -3000,8 +3452,8 @@
           "gridPos": {
             "h": 3,
             "w": 3,
-            "x": 15,
-            "y": 4
+            "x": 12,
+            "y": 5
           },
           "id": 55,
           "options": {
@@ -3114,6 +3566,449 @@
           ],
           "title": "Debug Level",
           "type": "canvas"
+        }
+      ],
+      "title": "Settings - OLED",
+      "type": "row"
+    },
+    {
+      "collapsed": true,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 2
+      },
+      "id": 65,
+      "panels": [
+        {
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "${DS_PIRONMAN_API}"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "color": {
+                "mode": "thresholds"
+              },
+              "mappings": [
+                {
+                  "options": {
+                    "false": {
+                      "color": "red",
+                      "index": 0,
+                      "text": "Off"
+                    },
+                    "follow": {
+                      "color": "blue",
+                      "index": 2,
+                      "text": "Fllw"
+                    },
+                    "off": {
+                      "color": "red",
+                      "index": 4,
+                      "text": "Off"
+                    },
+                    "on": {
+                      "color": "green",
+                      "index": 3,
+                      "text": "On"
+                    },
+                    "true": {
+                      "color": "green",
+                      "index": 1,
+                      "text": "On"
+                    }
+                  },
+                  "type": "value"
+                }
+              ],
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 6,
+            "w": 3,
+            "x": 0,
+            "y": 3
+          },
+          "id": 39,
+          "options": {
+            "inlineEditing": false,
+            "panZoom": false,
+            "root": {
+              "background": {
+                "color": {
+                  "fixed": "transparent"
+                },
+                "image": {
+                  "field": "",
+                  "fixed": "",
+                  "mode": "fixed"
+                }
+              },
+              "border": {
+                "color": {
+                  "fixed": "dark-green"
+                }
+              },
+              "constraint": {
+                "horizontal": "left",
+                "vertical": "top"
+              },
+              "elements": [
+                {
+                  "background": {
+                    "color": {
+                      "fixed": "transparent"
+                    }
+                  },
+                  "border": {
+                    "color": {
+                      "fixed": "dark-green"
+                    }
+                  },
+                  "config": {
+                    "align": "center",
+                    "api": {
+                      "contentType": "application/json",
+                      "data": "{\"led\":\"off\"}",
+                      "endpoint": "http://192.168.1.62:34001/api/v1.0/set-fan-led",
+                      "headerParams": [],
+                      "method": "POST",
+                      "queryParams": []
+                    },
+                    "color": {
+                      "fixed": "#F0F4FD"
+                    },
+                    "size": 14,
+                    "style": {
+                      "variant": "destructive"
+                    },
+                    "text": {
+                      "fixed": "OFF",
+                      "mode": "fixed"
+                    }
+                  },
+                  "connections": [],
+                  "constraint": {
+                    "horizontal": "left",
+                    "vertical": "top"
+                  },
+                  "name": "OFF",
+                  "placement": {
+                    "height": 45,
+                    "left": 135,
+                    "rotation": 0,
+                    "top": 6,
+                    "width": 65
+                  },
+                  "type": "button"
+                },
+                {
+                  "background": {
+                    "color": {
+                      "fixed": "transparent"
+                    }
+                  },
+                  "border": {
+                    "color": {
+                      "fixed": "dark-green"
+                    }
+                  },
+                  "config": {
+                    "align": "center",
+                    "api": {
+                      "contentType": "application/json",
+                      "data": "{\"led\":\"on\"}",
+                      "endpoint": "http://192.168.1.62:34001/api/v1.0/set-fan-led",
+                      "headerParams": [],
+                      "method": "POST",
+                      "queryParams": []
+                    },
+                    "color": {
+                      "fixed": "#F0F4FD"
+                    },
+                    "size": 14,
+                    "style": {
+                      "variant": "success"
+                    },
+                    "text": {
+                      "fixed": "ON",
+                      "mode": "fixed"
+                    }
+                  },
+                  "connections": [],
+                  "constraint": {
+                    "horizontal": "left",
+                    "vertical": "top"
+                  },
+                  "name": "ON",
+                  "placement": {
+                    "height": 45,
+                    "left": 55,
+                    "rotation": 0,
+                    "top": 6,
+                    "width": 65
+                  },
+                  "type": "button"
+                },
+                {
+                  "background": {
+                    "color": {
+                      "fixed": "transparent"
+                    }
+                  },
+                  "border": {
+                    "color": {
+                      "fixed": "dark-green"
+                    }
+                  },
+                  "config": {
+                    "align": "center",
+                    "api": {
+                      "contentType": "application/json",
+                      "data": "{\"led\":\"follow\"}",
+                      "endpoint": "http://192.168.1.62:34001/api/v1.0/set-fan-led",
+                      "headerParams": [],
+                      "method": "POST",
+                      "queryParams": []
+                    },
+                    "color": {
+                      "fixed": "#F0F4FD"
+                    },
+                    "size": 14,
+                    "style": {
+                      "variant": "primary"
+                    },
+                    "text": {
+                      "field": "gpio_fan_led",
+                      "fixed": "Follow",
+                      "mode": "fixed"
+                    }
+                  },
+                  "constraint": {
+                    "horizontal": "left",
+                    "vertical": "top"
+                  },
+                  "name": "FOLLOW",
+                  "placement": {
+                    "height": 45,
+                    "left": 56,
+                    "rotation": 0,
+                    "top": 64,
+                    "width": 144
+                  },
+                  "type": "button"
+                },
+                {
+                  "background": {
+                    "color": {
+                      "field": "gpio_fan_led",
+                      "fixed": "#D9D9D9"
+                    },
+                    "image": {
+                      "field": "gpio_fan_led",
+                      "mode": "field"
+                    }
+                  },
+                  "border": {
+                    "color": {
+                      "fixed": "dark-green"
+                    }
+                  },
+                  "config": {
+                    "align": "center",
+                    "color": {
+                      "fixed": "#000000"
+                    },
+                    "text": {
+                      "field": "gpio_fan_led",
+                      "mode": "field"
+                    },
+                    "valign": "middle"
+                  },
+                  "connections": [],
+                  "constraint": {
+                    "horizontal": "left",
+                    "vertical": "top"
+                  },
+                  "links": [],
+                  "name": "LED",
+                  "placement": {
+                    "height": 35,
+                    "left": 8,
+                    "rotation": 0,
+                    "top": 11,
+                    "width": 35
+                  },
+                  "type": "ellipse"
+                }
+              ],
+              "name": "Element 1760687738966",
+              "placement": {
+                "height": 100,
+                "left": 0,
+                "rotation": 0,
+                "top": 0,
+                "width": 100
+              },
+              "type": "frame"
+            },
+            "showAdvancedTypes": false,
+            "tooltip": {
+              "disableForOneClick": false,
+              "mode": "none"
+            },
+            "zoomToContent": false
+          },
+          "pluginVersion": "12.2.0",
+          "targets": [
+            {
+              "columns": [
+                {
+                  "selector": "gpio_fan_led",
+                  "text": "",
+                  "type": "string"
+                }
+              ],
+              "datasource": {
+                "type": "yesoreyeram-infinity-datasource",
+                "uid": "${DS_PIRONMAN_API}"
+              },
+              "filters": [],
+              "format": "table",
+              "global_query_id": "",
+              "parser": "backend",
+              "refId": "A",
+              "root_selector": "data.system",
+              "source": "url",
+              "type": "json",
+              "url": "get-config",
+              "url_options": {
+                "data": "",
+                "method": "GET"
+              }
+            }
+          ],
+          "title": "Fan Led",
+          "type": "canvas"
+        },
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "thresholdsStyle": {
+                  "mode": "color",
+                  "thresholds": []
+                }
+              },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "blue",
+                    "value": 10
+                  },
+                  {
+                    "color": "yellow",
+                    "value": 40
+                  },
+                  {
+                    "color": "orange",
+                    "value": 60
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  },
+                  {
+                    "color": "purple",
+                    "value": 90
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 3,
+            "w": 6,
+            "x": 3,
+            "y": 3
+          },
+          "id": 66,
+          "options": {
+            "alertCustomMessage": "",
+            "alwaysVisibleFilter": false,
+            "autoScroll": false,
+            "browserTabNamePattern": "",
+            "collapsedByDefault": false,
+            "customValue": false,
+            "displayMode": "slider",
+            "emptyValue": false,
+            "favorites": {
+              "enabled": false,
+              "storage": "browser"
+            },
+            "filter": false,
+            "groupSelection": false,
+            "header": true,
+            "isMinimizeForTable": false,
+            "isMinimizeViewShowCustomIcon": false,
+            "isPinTabsEnabled": false,
+            "isUseLocalTime": false,
+            "minimizeOutputFormat": "text",
+            "minimizeViewCustomIcon": "",
+            "minimizeViewNativeIcon": "gf-movepane-right",
+            "padding": 10,
+            "persistent": false,
+            "requestLatency": "low",
+            "saveSelectedGroup": false,
+            "saveSelectedGroupKey": "",
+            "selectedValues": {
+              "showSelected": false
+            },
+            "showGroupTotal": false,
+            "showLabel": false,
+            "showName": false,
+            "showResetButton": false,
+            "showTotal": false,
+            "statusSort": false,
+            "sticky": false,
+            "tabsInOrder": true,
+            "variable": "prm_gpio_fan_mode",
+            "wordBreak": "normal"
+          },
+          "pluginVersion": "4.1.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "-- Dashboard --"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "GPIO Fan Mode",
+          "type": "volkovlabs-variable-panel"
         },
         {
           "datasource": {
@@ -3173,8 +4068,8 @@
           "gridPos": {
             "h": 3,
             "w": 6,
-            "x": 18,
-            "y": 4
+            "x": 3,
+            "y": 6
           },
           "id": 46,
           "options": {
@@ -3352,7 +4247,7 @@
           "type": "canvas"
         }
       ],
-      "title": "Quick Settings",
+      "title": "Settings - Fan",
       "type": "row"
     },
     {
@@ -3361,7 +4256,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 1
+        "y": 3
       },
       "id": 36,
       "panels": [],
@@ -3412,7 +4307,7 @@
         "h": 6,
         "w": 3,
         "x": 0,
-        "y": 2
+        "y": 4
       },
       "id": 3,
       "options": {
@@ -3447,7 +4342,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "CPU Temp",
           "resultFormat": "time_series",
           "select": [
@@ -3507,7 +4402,7 @@
         "h": 6,
         "w": 3,
         "x": 3,
-        "y": 2
+        "y": 4
       },
       "id": 6,
       "options": {
@@ -3544,7 +4439,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "CPU Temp",
           "resultFormat": "time_series",
           "select": [
@@ -3622,7 +4517,7 @@
         "h": 6,
         "w": 3,
         "x": 6,
-        "y": 2
+        "y": 4
       },
       "id": 31,
       "options": {
@@ -3738,7 +4633,7 @@
         "h": 6,
         "w": 3,
         "x": 9,
-        "y": 2
+        "y": 4
       },
       "id": 32,
       "options": {
@@ -3854,7 +4749,7 @@
         "h": 6,
         "w": 6,
         "x": 12,
-        "y": 2
+        "y": 4
       },
       "id": 41,
       "options": {
@@ -4091,7 +4986,7 @@
         "h": 6,
         "w": 6,
         "x": 18,
-        "y": 2
+        "y": 4
       },
       "id": 42,
       "options": {
@@ -4205,7 +5100,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 10
       },
       "id": 5,
       "panels": [],
@@ -4265,7 +5160,7 @@
         "h": 8,
         "w": 5,
         "x": 0,
-        "y": 9
+        "y": 11
       },
       "id": 7,
       "options": {
@@ -4302,7 +5197,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "CPU Temp",
           "resultFormat": "time_series",
           "select": [
@@ -4367,7 +5262,7 @@
         "h": 8,
         "w": 5,
         "x": 5,
-        "y": 9
+        "y": 11
       },
       "id": 29,
       "options": {
@@ -4404,7 +5299,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "CPU Temp",
           "resultFormat": "time_series",
           "select": [
@@ -4515,7 +5410,7 @@
         "h": 8,
         "w": 14,
         "x": 10,
-        "y": 9
+        "y": 11
       },
       "id": 1,
       "options": {
@@ -4548,7 +5443,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "CPU Temp",
           "resultFormat": "time_series",
           "select": [
@@ -4608,7 +5503,7 @@
         "h": 8,
         "w": 5,
         "x": 0,
-        "y": 17
+        "y": 19
       },
       "id": 30,
       "options": {
@@ -4645,7 +5540,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "CPU Temp",
           "resultFormat": "time_series",
           "select": [
@@ -4710,7 +5605,7 @@
         "h": 8,
         "w": 5,
         "x": 5,
-        "y": 17
+        "y": 19
       },
       "id": 4,
       "options": {
@@ -4747,8 +5642,8 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
-          "refId": "CPU Temp",
+          "policy": "default",
+          "refId": "GPU Temp",
           "resultFormat": "time_series",
           "select": [
             [
@@ -4858,7 +5753,7 @@
         "h": 8,
         "w": 14,
         "x": 10,
-        "y": 17
+        "y": 19
       },
       "id": 12,
       "options": {
@@ -4891,7 +5786,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "GPU Temp",
           "resultFormat": "time_series",
           "select": [
@@ -4926,7 +5821,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 25
+        "y": 27
       },
       "id": 8,
       "panels": [],
@@ -4973,7 +5868,7 @@
         "h": 8,
         "w": 5,
         "x": 0,
-        "y": 26
+        "y": 28
       },
       "id": 14,
       "options": {
@@ -5072,7 +5967,7 @@
         "h": 8,
         "w": 5,
         "x": 5,
-        "y": 26
+        "y": 28
       },
       "id": 13,
       "options": {
@@ -5225,7 +6120,7 @@
         "h": 8,
         "w": 14,
         "x": 10,
-        "y": 26
+        "y": 28
       },
       "id": 2,
       "options": {
@@ -5261,7 +6156,7 @@
           "orderByTime": "ASC",
           "policy": "default",
           "query": "SELECT moving_average(mean(\"cpu_0_percent\"), 10) FROM \"history\" WHERE $timeFilter GROUP BY time($__interval)",
-          "rawQuery": true,
+          "rawQuery": false,
           "refId": "CPU 0",
           "resultFormat": "time_series",
           "select": [
@@ -5422,7 +6317,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 36
       },
       "id": 9,
       "panels": [],
@@ -5469,7 +6364,7 @@
         "h": 8,
         "w": 5,
         "x": 0,
-        "y": 35
+        "y": 37
       },
       "id": 17,
       "options": {
@@ -5568,7 +6463,7 @@
         "h": 8,
         "w": 5,
         "x": 5,
-        "y": 35
+        "y": 37
       },
       "id": 15,
       "options": {
@@ -5607,7 +6502,7 @@
           "measurement": "history",
           "orderByTime": "ASC",
           "policy": "default",
-          "refId": "CPU %",
+          "refId": "Memory %",
           "resultFormat": "time_series",
           "select": [
             [
@@ -5701,7 +6596,7 @@
         "h": 8,
         "w": 14,
         "x": 10,
-        "y": 35
+        "y": 37
       },
       "id": 16,
       "options": {
@@ -5857,7 +6752,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 43
+        "y": 45
       },
       "id": 10,
       "panels": [],
@@ -5915,7 +6810,7 @@
         "h": 8,
         "w": 10,
         "x": 0,
-        "y": 44
+        "y": 46
       },
       "id": 19,
       "options": {
@@ -6077,7 +6972,7 @@
         "h": 8,
         "w": 14,
         "x": 10,
-        "y": 44
+        "y": 46
       },
       "id": 18,
       "options": {
@@ -6191,7 +7086,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 52
+        "y": 54
       },
       "id": 11,
       "panels": [],
@@ -6250,7 +7145,7 @@
         "h": 8,
         "w": 5,
         "x": 0,
-        "y": 53
+        "y": 55
       },
       "id": 26,
       "options": {
@@ -6287,7 +7182,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "mounted",
           "resultFormat": "time_series",
           "select": [
@@ -6359,7 +7254,7 @@
         "h": 8,
         "w": 5,
         "x": 5,
-        "y": 53
+        "y": 55
       },
       "id": 34,
       "options": {
@@ -6398,7 +7293,7 @@
           "measurement": "history",
           "orderByTime": "ASC",
           "policy": "default",
-          "refId": "Disc %",
+          "refId": "SD Card  %",
           "resultFormat": "time_series",
           "select": [
             [
@@ -6505,7 +7400,7 @@
         "h": 8,
         "w": 14,
         "x": 10,
-        "y": 53
+        "y": 55
       },
       "id": 21,
       "options": {
@@ -6707,7 +7602,7 @@
         "h": 8,
         "w": 5,
         "x": 0,
-        "y": 61
+        "y": 63
       },
       "id": 27,
       "options": {
@@ -6744,7 +7639,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "mounted",
           "resultFormat": "time_series",
           "select": [
@@ -6816,7 +7711,7 @@
         "h": 8,
         "w": 5,
         "x": 5,
-        "y": 61
+        "y": 63
       },
       "id": 35,
       "options": {
@@ -6838,7 +7733,7 @@
       "pluginVersion": "12.2.0",
       "targets": [
         {
-          "alias": "SD Card %",
+          "alias": "NVME SSD %",
           "datasource": {
             "type": "influxdb",
             "uid": "${DS_INFLUXDB}"
@@ -6855,7 +7750,7 @@
           "measurement": "history",
           "orderByTime": "ASC",
           "policy": "default",
-          "refId": "Disc %",
+          "refId": "NVME SSD %",
           "resultFormat": "time_series",
           "select": [
             [
@@ -6962,7 +7857,7 @@
         "h": 8,
         "w": 14,
         "x": 10,
-        "y": 61
+        "y": 63
       },
       "id": 23,
       "options": {
@@ -7164,7 +8059,7 @@
         "h": 8,
         "w": 5,
         "x": 0,
-        "y": 69
+        "y": 71
       },
       "id": 28,
       "options": {
@@ -7201,7 +8096,7 @@
           ],
           "measurement": "history",
           "orderByTime": "ASC",
-          "policy": "1d",
+          "policy": "default",
           "refId": "mounted",
           "resultFormat": "time_series",
           "select": [
@@ -7273,7 +8168,7 @@
         "h": 8,
         "w": 5,
         "x": 5,
-        "y": 69
+        "y": 71
       },
       "id": 24,
       "options": {
@@ -7295,7 +8190,7 @@
       "pluginVersion": "12.2.0",
       "targets": [
         {
-          "alias": "SD Card %",
+          "alias": "USB Disc %",
           "datasource": {
             "type": "influxdb",
             "uid": "${DS_INFLUXDB}"
@@ -7312,7 +8207,7 @@
           "measurement": "history",
           "orderByTime": "ASC",
           "policy": "default",
-          "refId": "Disc %",
+          "refId": "USB Disc %",
           "resultFormat": "time_series",
           "select": [
             [
@@ -7419,7 +8314,7 @@
         "h": 8,
         "w": 14,
         "x": 10,
-        "y": 69
+        "y": 71
       },
       "id": 25,
       "options": {
@@ -7575,10 +8470,101 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 77
+        "y": 79
       },
       "id": 56,
       "panels": [
+        {
+          "datasource": {
+            "type": "datasource",
+            "uid": "-- Dashboard --"
+          },
+          "fieldConfig": {
+            "defaults": {
+              "custom": {
+                "thresholdsStyle": {
+                  "mode": "color",
+                  "thresholds": []
+                }
+              },
+              "thresholds": {
+                "mode": "absolute",
+                "steps": [
+                  {
+                    "color": "green",
+                    "value": 0
+                  },
+                  {
+                    "color": "red",
+                    "value": 80
+                  }
+                ]
+              }
+            },
+            "overrides": []
+          },
+          "gridPos": {
+            "h": 7,
+            "w": 5,
+            "x": 0,
+            "y": 292
+          },
+          "id": 70,
+          "options": {
+            "alertCustomMessage": "",
+            "alwaysVisibleFilter": false,
+            "autoScroll": false,
+            "browserTabNamePattern": "",
+            "collapsedByDefault": false,
+            "customValue": false,
+            "displayMode": "table",
+            "emptyValue": false,
+            "favorites": {
+              "enabled": false,
+              "storage": "browser"
+            },
+            "filter": false,
+            "groupSelection": false,
+            "header": false,
+            "isMinimizeForTable": false,
+            "isMinimizeViewShowCustomIcon": false,
+            "isPinTabsEnabled": false,
+            "isUseLocalTime": false,
+            "minimizeOutputFormat": "text",
+            "minimizeViewCustomIcon": "",
+            "minimizeViewNativeIcon": "gf-movepane-right",
+            "padding": 10,
+            "persistent": false,
+            "requestLatency": "low",
+            "saveSelectedGroup": false,
+            "saveSelectedGroupKey": "",
+            "selectedValues": {
+              "showSelected": false
+            },
+            "showGroupTotal": false,
+            "showLabel": false,
+            "showName": false,
+            "showResetButton": false,
+            "showTotal": false,
+            "statusSort": false,
+            "sticky": false,
+            "tabsInOrder": true,
+            "variable": "prm_logs",
+            "wordBreak": "normal"
+          },
+          "pluginVersion": "4.1.0",
+          "targets": [
+            {
+              "datasource": {
+                "type": "datasource",
+                "uid": "-- Dashboard --"
+              },
+              "refId": "A"
+            }
+          ],
+          "title": "Logs File",
+          "type": "volkovlabs-variable-panel"
+        },
         {
           "datasource": {
             "type": "yesoreyeram-infinity-datasource",
@@ -7669,10 +8655,10 @@
             ]
           },
           "gridPos": {
-            "h": 13,
+            "h": 20,
             "w": 19,
-            "x": 0,
-            "y": 90
+            "x": 5,
+            "y": 292
           },
           "id": 58,
           "options": {
@@ -7811,8 +8797,8 @@
           "gridPos": {
             "h": 13,
             "w": 5,
-            "x": 19,
-            "y": 90
+            "x": 0,
+            "y": 299
           },
           "id": 59,
           "options": {
@@ -7957,8 +8943,8 @@
       {
         "allowCustomValue": false,
         "current": {
-          "text": "127.0.0.1:34001",
-          "value": "127.0.0.1:34001"
+          "text": "192.168.1.62:34001",
+          "value": "192.168.1.62:34001"
         },
         "description": "",
         "hide": 2,
@@ -7967,11 +8953,11 @@
         "options": [
           {
             "selected": true,
-            "text": "127.0.0.1:34001",
-            "value": "127.0.0.1:34001"
+            "text": "192.168.1.62:34001",
+            "value": "192.168.1.62:34001"
           }
         ],
-        "query": "127.0.0.1:34001",
+        "query": "192.168.1.62:34001",
         "type": "custom"
       },
       {
@@ -7980,6 +8966,7 @@
           "text": "rainbow",
           "value": "rainbow"
         },
+        "hide": 2,
         "label": "RGB Style",
         "name": "prm_rgb_style",
         "options": [
@@ -8030,9 +9017,10 @@
       {
         "allowCustomValue": false,
         "current": {
-          "text": "50",
-          "value": "50"
+          "text": "5",
+          "value": "5"
         },
+        "hide": 2,
         "label": "RGB Speed",
         "name": "prm_rgb_speed",
         "options": [
@@ -8047,7 +9035,7 @@
             "value": "1"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "5",
             "value": "5"
           },
@@ -8072,7 +9060,7 @@
             "value": "25"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "50",
             "value": "50"
           },
@@ -8096,6 +9084,7 @@
           "value": "#42ff30"
         },
         "description": "only available if RGB Style = Solid",
+        "hide": 2,
         "label": "RGB Color",
         "name": "prm_rgb_color",
         "options": [
@@ -8120,9 +9109,10 @@
       },
       {
         "current": {
-          "text": "20",
-          "value": "20"
+          "text": "10",
+          "value": "10"
         },
+        "hide": 2,
         "label": "RGB Brightness",
         "name": "prm_rgb_brightness",
         "options": [
@@ -8137,7 +9127,7 @@
             "value": "5"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "10",
             "value": "10"
           },
@@ -8147,7 +9137,7 @@
             "value": "15"
           },
           {
-            "selected": true,
+            "selected": false,
             "text": "20",
             "value": "20"
           },
@@ -8181,6 +9171,7 @@
           "value": "0"
         },
         "description": "OLED Sleep Timeout duration miliseconds.\nOptions : 0 = never sleep/always on,\n60 = 1 minute later",
+        "hide": 2,
         "label": "OLEP Sleep",
         "name": "prm_oled_sleep_timeout",
         "options": [
@@ -8252,6 +9243,7 @@
         },
         "definition": "",
         "description": "Sets which Disc's capacity and usage information will be displayed on the OLED screen.",
+        "hide": 2,
         "label": "OLED Disk",
         "name": "prm_oled_disk",
         "options": [],
@@ -8293,6 +9285,7 @@
         },
         "definition": "",
         "description": "Sets which Network Interface information will be displayed on the OLED screen.",
+        "hide": 2,
         "label": "OLED Network",
         "name": "prm_oled_network",
         "options": [],
@@ -8326,6 +9319,7 @@
           "value": "2"
         },
         "description": "Determines the operating frequency and noise level of the GPIO Fan. Options = Quite : 4,\nBalanced : 3,\nCool : 2,\nPerformance : 1,\nAlways_on : 0",
+        "hide": 2,
         "label": "GPIO Fan Mode",
         "name": "prm_gpio_fan_mode",
         "options": [
@@ -8367,6 +9361,7 @@
         },
         "definition": "",
         "description": "Select the Log File name that you need to see in the \"Logs Detail\" panel like \"data_logger\", \"vibration_switch\", \"database\", \"ws2812\" etc.",
+        "hide": 2,
         "label": "Logs File",
         "name": "prm_logs",
         "options": [],
@@ -8436,13 +9431,14 @@
     ]
   },
   "time": {
-    "from": "now-1h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "Pironman 5 Dashboard (Advanced)",
-  "uid": "adkv72c",
-  "version": 16,
-  "weekStart": ""
+  "title": "Pironman 5 Dashboard (Business)",
+  "uid": "adtgxxr",
+  "version": 8,
+  "weekStart": "",
+  "id": null
 }
