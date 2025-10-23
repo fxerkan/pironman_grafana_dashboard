@@ -14,13 +14,16 @@ A more visual, fancy, and resource-efficient dashboard in Grafana which is an al
 **Solution:**
 
 * Grafana dashboard to visualize the sensor data recorded at influxdb with more robust and resource efficient way
+  * [Simple Dashboard](#simple-dashboard)
 * Grouping different sensor widgets/panels
 * Responsive design for Mobile, Web
-* Visualization and Control the application via REST APIs at the same UI - [Advanced Dashboard](#advanced-dashboard)
+* Visualization and Control the application via REST APIs at the same UI
+  * [Advanced Dashboard](#advanced-dashboard)
+  * [Business Dashboard](#business-dashboard)
 * Auto Refresh by different time intervals like 1s, 5s, 10s, 30s ...
 * Sensor widgets for Temperature, Fan, Processor, Memory, Network, Storage
 * Alert & Notification definition capability by the thresholds
-* Retention Policy & Wirte/Read optimization for InfluxDB - [forum link](https://forum.sunfounder.com/t/pironman-5-dashboard-empty/1218/51?u=fxerkan)
+* **Recommended** Retention Policy & Wirte/Read optimization for InfluxDB - [forum link](https://forum.sunfounder.com/t/pironman-5-dashboard-empty/1218/51?u=fxerkan) please apply these instructions
 
 ## Simple Dashboard
 
@@ -40,15 +43,25 @@ A more visual, fancy, and resource-efficient dashboard in Grafana which is an al
 
 Please first change or select the **New Option/Configs** from the top **Variables bar** for the specific config and than click the related config's **Change** button at the below **Quick Settings** panel.
 
- 
 ![Advanced Dashboard](assets/advanced.png)
 
+## Business Dashboard
+
+The "Business Dashboard" is actually enhanced version of the [Advanced Dashboard](#advanced-dashboard) that uses the "[Business Variable](https://grafana.com/grafana/plugins/volkovlabs-variable-panel/)" plugin to make parameter/variable selections much more user-friendly.
+
+*Unfortunately, the name remained Business Dashboard due to the Business Variable plugin I used, but there is no Business content :-)
+
+* It includes user-friendly components allows for more easier parameter changing on mobile/tablet.
+* Slider panel
+* Dropdow list panel
+
+![Advanced Dashboard with Business Variable plugin](assets/business_variables.png)
 
 ## Installation & Configuration
 
 ### InfluxDB
 
-> Create Credentials for InfluxDB (**Recommended**)
+> 1. Create Credentials for InfluxDB (**Recommended**)
 
 Please create a user and password for the influxdb and use this credentials at Grafana influx connection.
 
@@ -61,19 +74,25 @@ influx
 ### Grafana
 
 * Create **InfluxDB** data source
-  * **URL :** [<http://localhost:8086>](http://localhost:8086) or http://ip-address-rpi:8086
-  * **Name :** pironman_influxdb
-  * **Database :** pironman
-  * **Username :** pironman
-  * **Password :** pironman-your-strong-password
+  * **URL :** [http://localhost:8086](http://localhost:8086) or http://ip-address-rpi:8086
+  * **Name :** *pironman_influxdb*
+  * **Database :** ***pironman5***
+  * **Username :** *pironman*
+  * **Password :** *pironman-your-strong-password*
 * Install **[Infinity](https://grafana.com/docs/plugins/yesoreyeram-infinity-datasource/latest/setup/installation/)** data source **plugin**
+* Install **[Business Variable](https://grafana.com/grafana/plugins/volkovlabs-variable-panel/)** **plugin**
 * Creaate **Infinity** data source
-  * **Name :** pironman_api
-  * **Auth type :** No Auth
-  * **Base URL :** [<http://localhost:34001/api/v1.0/>](http://localhost:34001/api/v1.0/) or http://ip-address-rpi:34001/api/v1.0/
+  * **Name :** *pironman_api*
+  * **Auth type :** *No Auth*
+  * **Base URL :** *[http://localhost:34001/api/v1.0/](http://localhost:34001/api/v1.0/) or http://ip-address-rpi:34001/api/v1.0/*
+* **Import** the Grafana Dashboard (JSON) files
 * Change the "**prm_server_url**" variable with your raspberry pi server IP address (without http:// or https://) from the Dashboard > Settings > Variables
-  * **prm_server_url :** localhost:340001 or ip-address-rpi:34001
+  * **prm_server_url :** *localhost:340001 or ip-address-rpi:34001*
   * ![variables](assets/grafana_dashboard_variables.png)
+* **Important:** You can have different Storage, Network Interfaces so that you may need to change some of the charts influxdb queries depends on your interfaces.
+  * ![error triangle](assets/error_triangle.png) If you see this error triangle icon inside the panel, please apply the below steps
+  * For example if you don't have the NVME SSD drive than “**disk_/dev/nvme0n1_percent**” field should not be available or field name should be different like maybe “disk_/dev/nvme1n1_percent” or “***disk_/dev/sda_percent***” or “***disk_/dev/sdb_percent***”. In that case please change the field names with yours like below.
+  * ![alt text](assets/disc_fields.png)
 
 ## Troubleshoot
 
