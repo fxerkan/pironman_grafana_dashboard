@@ -8688,7 +8688,7 @@
               "root_selector": "data",
               "source": "url",
               "type": "json",
-              "url": "get-log?filename=${prm_logs}&filter=&lines=2000&level=DEBUG",
+              "url": "get-log?filename=${prm_logs}&filter=&lines=${prm_log_lines}&level=${prm_log_level}",
               "url_options": {
                 "data": "",
                 "method": "GET"
@@ -8848,7 +8848,7 @@
               "root_selector": "data",
               "source": "url",
               "type": "json",
-              "url": "get-log?filename=${prm_logs}&filter=&lines=2000&level=DEBUG",
+              "url": "get-log?filename=${prm_logs}&filter=&lines=${prm_log_lines}&level=${prm_log_level}",
               "url_options": {
                 "data": "",
                 "method": "GET"
@@ -9354,7 +9354,10 @@
       },
       {
         "allowCustomValue": false,
-        "current": {},
+        "current": {
+          "text": "main.log",
+          "value": "main.log"
+        },
         "datasource": {
           "type": "yesoreyeram-infinity-datasource",
           "uid": "${DS_PIRONMAN_API}"
@@ -9392,15 +9395,15 @@
       {
         "allowCustomValue": false,
         "current": {
-          "text": "INFO",
-          "value": "INFO"
+          "text": "DEBUG",
+          "value": "DEBUG"
         },
-        "hide": 2,
+        "hide": 0,
         "label": "Log Level",
         "name": "prm_log_level",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "INFO",
             "value": "INFO"
           },
@@ -9415,7 +9418,7 @@
             "value": "ERROR"
           },
           {
-            "selected": false,
+            "selected": true,
             "text": "DEBUG",
             "value": "DEBUG"
           },
@@ -9426,6 +9429,21 @@
           }
         ],
         "query": "INFO, WARNING, ERROR, DEBUG, CRITICAL",
+        "type": "custom",
+        "description": "Minimum log level requested from the API. DEBUG returns everything; INFO and above are filtered server-side."
+      },
+      {
+        "allowCustomValue": true,
+        "current": {
+          "text": "2000",
+          "value": "2000"
+        },
+        "description": "How many log lines to request from the pm_dashboard API. The API returns the LAST N lines, so a larger value reaches further back in time.",
+        "hide": 0,
+        "label": "Log Lines",
+        "name": "prm_log_lines",
+        "options": [],
+        "query": "200, 500, 1000, 2000, 5000, 10000",
         "type": "custom"
       }
     ]
