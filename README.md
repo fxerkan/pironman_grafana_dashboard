@@ -14,48 +14,31 @@ A more visual, fancy, and resource-efficient dashboard in Grafana which is an al
 **Solution:**
 
 * Grafana dashboard to visualize the sensor data recorded at influxdb with more robust and resource efficient way
-  * [Simple Dashboard](#simple-dashboard)
 * Grouping different sensor widgets/panels
 * Responsive design for Mobile, Web
 * Visualization and Control the application via REST APIs at the same UI
-  * [Advanced Dashboard](#advanced-dashboard)
-  * [Business Dashboard](#business-dashboard)
+  * [Dashboard](#dashboard)
 * Auto Refresh by different time intervals like 1s, 5s, 10s, 30s ...
 * Sensor widgets for Temperature, Fan, Processor, Memory, Network, Storage
 * Alert & Notification definition capability by the thresholds
 * **Recommended** Retention Policy & Wirte/Read optimization for InfluxDB - [forum link](https://forum.sunfounder.com/t/pironman-5-dashboard-empty/1218/51?u=fxerkan) please apply these instructions
 
-## Simple Dashboard
+## Dashboard
 
-* Simple and easy UI, just shows only the sensor readings
+A single, resource-efficient dashboard that shows every sensor reading and lets you control the Pironman from the same UI.
 
-![Simple Dashboard](assets/simple.png)
-
-## Advanced Dashboard
-
-* Everything in Simple Dashboard +
-* Advanced and detailed UI design with the variables, buttons and actions
+* Sensor readings — Temperature, Fan, Processor, Memory, Network, Storage
+* Advanced, detailed UI with variables, buttons and actions
 * **Control** the pironman application settings via **REST API**
-  * OLED Control - On/Off, Sleep Timout, Rotation, Disk & Network interface selection
+  * OLED Control - On/Off, Sleep Timeout, Rotation, Disk & Network interface selection
   * RGB Led Control - On/Off, Style, Speed, Brightness, Color
   * Fan Control - Led On/Off/Follow, Fan Mode
 * **Logs Panel** to show the detailed logs of the selected **Log File**
+* User-friendly [Business Variable](https://grafana.com/grafana/plugins/volkovlabs-variable-panel/) slider and dropdown panels for easy parameter changes on mobile/tablet
 
-Please first change or select the **New Option/Configs** from the top **Variables bar** for the specific config and than click the related config's **Change** button at the below **Quick Settings** panel.
+Please first change or select the **New Option/Configs** from the top **Variables bar** for the specific config and then click the related config's **Change** button in the **Quick Settings** panel below.
 
-![Advanced Dashboard](assets/advanced.png)
-
-## Business Dashboard
-
-The "Business Dashboard" is actually enhanced version of the [Advanced Dashboard](#advanced-dashboard) that uses the "[Business Variable](https://grafana.com/grafana/plugins/volkovlabs-variable-panel/)" plugin to make parameter/variable selections much more user-friendly.
-
-*Unfortunately, the name remained Business Dashboard due to the Business Variable plugin I used, but there is no Business content :-)
-
-* It includes user-friendly components allows for more easier parameter changing on mobile/tablet.
-* Slider panel
-* Dropdow list panel
-
-![Advanced Dashboard with Business Variable plugin](assets/business_variables.png)
+![Pironman 5 Dashboard](assets/business_variables.png)
 
 ## Installation & Configuration
 
@@ -85,7 +68,7 @@ influx
   * **Name :** *pironman_api*
   * **Auth type :** *No Auth*
   * **Base URL :** *[http://localhost:34001/api/v1.0/](http://localhost:34001/api/v1.0/) or http://ip-address-rpi:34001/api/v1.0/*
-* **Import** the Grafana Dashboard (JSON) files
+* **Import** the Grafana Dashboard (JSON) file
 * Change the "**prm_server_url**" variable with your raspberry pi server IP address (without http:// or https://) from the Dashboard > Settings > Variables
   * **prm_server_url :** *localhost:340001 or ip-address-rpi:34001*
   * ![variables](assets/grafana_dashboard_variables.png)

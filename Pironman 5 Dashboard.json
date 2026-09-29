@@ -4890,7 +4890,7 @@
             [
               {
                 "params": [
-                  "disk_/dev/sda_percent"
+                  "disk_/dev/sdb_percent"
                 ],
                 "type": "field"
               },
@@ -8103,7 +8103,7 @@
             [
               {
                 "params": [
-                  "disk_/dev/sda_mounted"
+                  "disk_/dev/sdb_mounted"
                 ],
                 "type": "field"
               },
@@ -8213,7 +8213,7 @@
             [
               {
                 "params": [
-                  "disk_/dev/sda_percent"
+                  "disk_/dev/sdb_percent"
                 ],
                 "type": "field"
               },
@@ -8358,7 +8358,7 @@
             [
               {
                 "params": [
-                  "disk_/dev/sda_total"
+                  "disk_/dev/sdb_total"
                 ],
                 "type": "field"
               },
@@ -8400,7 +8400,7 @@
             [
               {
                 "params": [
-                  "disk_/dev/sda_used"
+                  "disk_/dev/sdb_used"
                 ],
                 "type": "field"
               },
@@ -8442,7 +8442,7 @@
             [
               {
                 "params": [
-                  "disk_/dev/sda_free"
+                  "disk_/dev/sdb_free"
                 ],
                 "type": "field"
               },
@@ -9454,7 +9454,7 @@
   },
   "timepicker": {},
   "timezone": "browser",
-  "title": "Pironman 5 Dashboard (Business)",
+  "title": "Pironman 5 Dashboard",
   "uid": "adtgxxr",
   "version": 8,
   "weekStart": "",
