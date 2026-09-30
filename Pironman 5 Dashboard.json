@@ -4790,7 +4790,7 @@
           "resultFormat": "time_series",
           "orderByTime": "ASC",
           "rawQuery": true,
-          "query": "SELECT last(\"disk_${disk}_percent\") FROM \"history\" WHERE time > now() - 2m",
+          "query": "SELECT last(\"disk_/dev/${disk}_percent\") FROM \"history\" WHERE time > now() - 2m",
           "groupBy": [
             {
               "params": [
@@ -4801,10 +4801,10 @@
           ],
           "select": [],
           "tags": [],
-          "alias": "${disk}"
+          "alias": "/dev/${disk}"
         }
       ],
-      "title": "${disk} %",
+      "title": "/dev/${disk} %",
       "type": "gauge",
       "repeat": "disk",
       "repeatDirection": "h",
@@ -6988,7 +6988,7 @@
       },
       "id": 11,
       "panels": [],
-      "title": "Storage \u00b7 ${disk}",
+      "title": "Storage \u00b7 /dev/${disk}",
       "type": "row",
       "repeat": "disk"
     },
@@ -7078,7 +7078,7 @@
           "resultFormat": "time_series",
           "orderByTime": "ASC",
           "rawQuery": true,
-          "query": "SELECT last(\"disk_${disk}_mounted\") FROM \"history\" WHERE time > now() - 2m",
+          "query": "SELECT last(\"disk_/dev/${disk}_mounted\") FROM \"history\" WHERE time > now() - 2m",
           "groupBy": [
             {
               "params": [
@@ -7176,7 +7176,7 @@
           "resultFormat": "time_series",
           "orderByTime": "ASC",
           "rawQuery": true,
-          "query": "SELECT last(\"disk_${disk}_percent\") FROM \"history\" WHERE time > now() - 2m",
+          "query": "SELECT last(\"disk_/dev/${disk}_percent\") FROM \"history\" WHERE time > now() - 2m",
           "groupBy": [
             {
               "params": [
@@ -7302,7 +7302,7 @@
           "resultFormat": "time_series",
           "orderByTime": "ASC",
           "rawQuery": true,
-          "query": "SELECT last(\"disk_${disk}_total\") FROM \"history\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
+          "query": "SELECT last(\"disk_/dev/${disk}_total\") FROM \"history\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
           "groupBy": [
             {
               "params": [
@@ -7326,7 +7326,7 @@
           "resultFormat": "time_series",
           "orderByTime": "ASC",
           "rawQuery": true,
-          "query": "SELECT last(\"disk_${disk}_used\") FROM \"history\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
+          "query": "SELECT last(\"disk_/dev/${disk}_used\") FROM \"history\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
           "groupBy": [
             {
               "params": [
@@ -7350,7 +7350,7 @@
           "resultFormat": "time_series",
           "orderByTime": "ASC",
           "rawQuery": true,
-          "query": "SELECT last(\"disk_${disk}_free\") FROM \"history\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
+          "query": "SELECT last(\"disk_/dev/${disk}_free\") FROM \"history\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
           "groupBy": [
             {
               "params": [
@@ -7872,7 +7872,7 @@
           "queryType": "infinity"
         },
         "refresh": 2,
-        "regex": "",
+        "regex": "/\\/dev\\/(.+)/",
         "sort": 1,
         "multi": true,
         "includeAll": true,
