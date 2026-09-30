@@ -84,7 +84,7 @@ if [ "$COMMIT" = 1 ]; then
     git add "$REPO_FILE"
     git -c commit.gpgsign=false commit -q -m "sync: capture live Grafana UI edits (uid $DASH_UID)"
     echo ">> committed" >&2
-    [ "$PUSH" = 1 ] && { git push -q; echo ">> pushed" >&2; }
+    [ "$PUSH" = 1 ] && { git push -q -u origin HEAD; echo ">> pushed" >&2; }
   fi
 fi
 echo ">> done" >&2
