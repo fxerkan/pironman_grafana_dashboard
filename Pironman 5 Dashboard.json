@@ -4790,7 +4790,7 @@
           "resultFormat": "time_series",
           "orderByTime": "ASC",
           "rawQuery": true,
-          "query": "SELECT last(\"disk_/dev/${disk}_percent\") FROM \"history\" WHERE time > now() - 2m",
+          "query": "SELECT last(\"disk_${disk}_percent\") FROM \"history\" WHERE time > now() - 2m",
           "groupBy": [
             {
               "params": [
@@ -6988,7 +6988,7 @@
       },
       "id": 11,
       "panels": [],
-      "title": "Storage \u00b7 /dev/${disk}",
+      "title": "Storage \u00b7 ${disk}",
       "type": "row",
       "repeat": "disk"
     },
@@ -7078,7 +7078,7 @@
           "resultFormat": "time_series",
           "orderByTime": "ASC",
           "rawQuery": true,
-          "query": "SELECT last(\"disk_/dev/${disk}_mounted\") FROM \"history\" WHERE time > now() - 2m",
+          "query": "SELECT last(\"disk_${disk}_mounted\") FROM \"history\" WHERE time > now() - 2m",
           "groupBy": [
             {
               "params": [
@@ -7176,7 +7176,7 @@
           "resultFormat": "time_series",
           "orderByTime": "ASC",
           "rawQuery": true,
-          "query": "SELECT last(\"disk_/dev/${disk}_percent\") FROM \"history\" WHERE time > now() - 2m",
+          "query": "SELECT last(\"disk_${disk}_percent\") FROM \"history\" WHERE time > now() - 2m",
           "groupBy": [
             {
               "params": [
@@ -7302,7 +7302,7 @@
           "resultFormat": "time_series",
           "orderByTime": "ASC",
           "rawQuery": true,
-          "query": "SELECT last(\"disk_/dev/${disk}_total\") FROM \"history\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
+          "query": "SELECT last(\"disk_${disk}_total\") FROM \"history\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
           "groupBy": [
             {
               "params": [
@@ -7326,7 +7326,7 @@
           "resultFormat": "time_series",
           "orderByTime": "ASC",
           "rawQuery": true,
-          "query": "SELECT last(\"disk_/dev/${disk}_used\") FROM \"history\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
+          "query": "SELECT last(\"disk_${disk}_used\") FROM \"history\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
           "groupBy": [
             {
               "params": [
@@ -7350,7 +7350,7 @@
           "resultFormat": "time_series",
           "orderByTime": "ASC",
           "rawQuery": true,
-          "query": "SELECT last(\"disk_/dev/${disk}_free\") FROM \"history\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
+          "query": "SELECT last(\"disk_${disk}_free\") FROM \"history\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
           "groupBy": [
             {
               "params": [
@@ -7847,13 +7847,33 @@
         "name": "disk",
         "label": "Disk",
         "type": "query",
+        "hide": 0,
         "datasource": {
-          "type": "influxdb",
-          "uid": "pironman_influxdb"
+          "type": "yesoreyeram-infinity-datasource",
+          "uid": "pironman_api"
         },
-        "query": "SHOW FIELD KEYS FROM \"history\"",
-        "regex": "/disk_\\/dev\\/(.+)_percent/",
+        "query": {
+          "infinityQuery": {
+            "columns": [],
+            "filters": [],
+            "format": "table",
+            "parser": "simple",
+            "refId": "variable",
+            "root_selector": "data",
+            "source": "url",
+            "type": "json",
+            "url": "get-disk-list",
+            "url_options": {
+              "data": "",
+              "method": "GET"
+            }
+          },
+          "query": "",
+          "queryType": "infinity"
+        },
         "refresh": 2,
+        "regex": "",
+        "sort": 1,
         "multi": true,
         "includeAll": true,
         "allValue": null,
@@ -7866,11 +7886,11 @@
             "$__all"
           ]
         },
-        "sort": 1,
-        "hide": 0,
-        "definition": "SHOW FIELD KEYS FROM \"history\"",
         "options": [],
-        "skipUrlSync": false
+        "staticOptions": [],
+        "allowCustomValue": false,
+        "skipUrlSync": false,
+        "definition": "get-disk-list"
       },
       {
         "allowCustomValue": false,
