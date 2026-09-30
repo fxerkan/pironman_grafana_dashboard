@@ -4710,116 +4710,6 @@
           "color": {
             "mode": "thresholds"
           },
-          "fieldMinMax": false,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": 0
-              },
-              {
-                "color": "green",
-                "value": 50
-              },
-              {
-                "color": "#EAB839",
-                "value": 60
-              },
-              {
-                "color": "orange",
-                "value": 70
-              },
-              {
-                "color": "red",
-                "value": 80
-              },
-              {
-                "color": "purple",
-                "value": 90
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 6,
-        "w": 3,
-        "x": 12,
-        "y": 4
-      },
-      "id": 41,
-      "options": {
-        "displayMode": "lcd",
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": false
-        },
-        "maxVizHeight": 300,
-        "minVizHeight": 16,
-        "minVizWidth": 8,
-        "namePlacement": "left",
-        "orientation": "horizontal",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showUnfilled": true,
-        "sizing": "auto",
-        "text": {},
-        "valueMode": "color"
-      },
-      "pluginVersion": "12.2.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "influxdb",
-            "uid": "pironman_influxdb"
-          },
-          "refId": "pct",
-          "measurement": "history",
-          "policy": "default",
-          "resultFormat": "time_series",
-          "orderByTime": "ASC",
-          "rawQuery": true,
-          "query": "SELECT last(\"disk_/dev/${disk}_percent\") FROM \"history\" WHERE time > now() - 2m",
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            }
-          ],
-          "select": [],
-          "tags": [],
-          "alias": "/dev/${disk}"
-        }
-      ],
-      "title": "/dev/${disk} %",
-      "type": "gauge",
-      "repeat": "disk",
-      "repeatDirection": "h",
-      "maxPerRow": 6
-    },
-    {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "${DS_INFLUXDB}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
           "custom": {
             "axisBorderShow": true,
             "axisCenteredZero": false,
@@ -4882,8 +4772,8 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 6,
-        "x": 18,
+        "w": 12,
+        "x": 12,
         "y": 4
       },
       "id": 42,
