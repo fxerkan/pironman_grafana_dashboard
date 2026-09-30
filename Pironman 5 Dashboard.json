@@ -2603,7 +2603,7 @@
                       "variant": "destructive"
                     },
                     "text": {
-                      "fixed": "180 °",
+                      "fixed": "180 \u00b0",
                       "mode": "fixed"
                     }
                   },
@@ -2651,7 +2651,7 @@
                       "variant": "primary"
                     },
                     "text": {
-                      "fixed": "0 °",
+                      "fixed": "0 \u00b0",
                       "mode": "fixed"
                     }
                   },
@@ -4747,7 +4747,7 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 6,
+        "w": 3,
         "x": 12,
         "y": 4
       },
@@ -4780,11 +4780,17 @@
       "pluginVersion": "12.2.0",
       "targets": [
         {
-          "alias": "SD Card %",
           "datasource": {
             "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
+            "uid": "pironman_influxdb"
           },
+          "refId": "pct",
+          "measurement": "history",
+          "policy": "default",
+          "resultFormat": "time_series",
+          "orderByTime": "ASC",
+          "rawQuery": true,
+          "query": "SELECT last(\"disk_${disk}_percent\") FROM \"history\" WHERE time > now() - 2m",
           "groupBy": [
             {
               "params": [
@@ -4793,124 +4799,16 @@
               "type": "time"
             }
           ],
-          "hide": false,
-          "limit": "1",
-          "measurement": "history",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "SD Card %",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "disk_/dev/mmcblk0_percent"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  10
-                ],
-                "type": "moving_average"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "NVME SSD %",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          },
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "limit": "1",
-          "measurement": "history",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "NVME SSD",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "disk_/dev/nvme0n1_percent"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  10
-                ],
-                "type": "moving_average"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "USB Disc %",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          },
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "limit": "1",
-          "measurement": "history",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "USB Disc %",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "disk_/dev/sdb_percent"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  10
-                ],
-                "type": "moving_average"
-              }
-            ]
-          ],
-          "tags": []
+          "select": [],
+          "tags": [],
+          "alias": "${disk}"
         }
       ],
-      "title": "Disc %",
-      "type": "bargauge"
+      "title": "${disk} %",
+      "type": "gauge",
+      "repeat": "disk",
+      "repeatDirection": "h",
+      "maxPerRow": 6
     },
     {
       "datasource": {
@@ -5912,7 +5810,7 @@
           "id": "transpose",
           "options": {
             "firstFieldName": "Metric",
-            "restFieldsName": "Measures ‎　　　　　　　　　　　　　"
+            "restFieldsName": "Measures \u200e\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000"
           }
         }
       ],
@@ -6408,7 +6306,7 @@
           "id": "transpose",
           "options": {
             "firstFieldName": "Metric",
-            "restFieldsName": "Measures ‎　　　　　　　　　　　　　"
+            "restFieldsName": "Measures \u200e\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000"
           }
         }
       ],
@@ -6892,7 +6790,7 @@
         {
           "id": "transpose",
           "options": {
-            "restFieldsName": "Measures ‎　　　　　　　　　　　　　　　　　　　　　　　　　　"
+            "restFieldsName": "Measures \u200e\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000\u3000"
           }
         }
       ],
@@ -7090,8 +6988,9 @@
       },
       "id": 11,
       "panels": [],
-      "title": "Storage",
-      "type": "row"
+      "title": "Storage \u00b7 ${disk}",
+      "type": "row",
+      "repeat": "disk"
     },
     {
       "datasource": {
@@ -7137,7 +7036,8 @@
                 "value": 0
               }
             ]
-          }
+          },
+          "noValue": "\u2014"
         },
         "overrides": []
       },
@@ -7147,7 +7047,7 @@
         "x": 0,
         "y": 55
       },
-      "id": 26,
+      "id": 201,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -7170,8 +7070,15 @@
         {
           "datasource": {
             "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
+            "uid": "pironman_influxdb"
           },
+          "refId": "mounted",
+          "measurement": "history",
+          "policy": "default",
+          "resultFormat": "time_series",
+          "orderByTime": "ASC",
+          "rawQuery": true,
+          "query": "SELECT last(\"disk_${disk}_mounted\") FROM \"history\" WHERE time > now() - 2m",
           "groupBy": [
             {
               "params": [
@@ -7180,29 +7087,11 @@
               "type": "time"
             }
           ],
-          "measurement": "history",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "mounted",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "disk_/dev/mmcblk0_mounted"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              }
-            ]
-          ],
+          "select": [],
           "tags": []
         }
       ],
-      "title": "SD Card Mounted",
+      "title": "Mounted",
       "type": "stat"
     },
     {
@@ -7246,7 +7135,8 @@
               }
             ]
           },
-          "unit": "percent"
+          "unit": "percent",
+          "noValue": "\u2014"
         },
         "overrides": []
       },
@@ -7256,7 +7146,7 @@
         "x": 5,
         "y": 55
       },
-      "id": 34,
+      "id": 202,
       "options": {
         "minVizHeight": 75,
         "minVizWidth": 75,
@@ -7276,11 +7166,17 @@
       "pluginVersion": "12.2.0",
       "targets": [
         {
-          "alias": "SD Card %",
           "datasource": {
             "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
+            "uid": "pironman_influxdb"
           },
+          "refId": "percent",
+          "measurement": "history",
+          "policy": "default",
+          "resultFormat": "time_series",
+          "orderByTime": "ASC",
+          "rawQuery": true,
+          "query": "SELECT last(\"disk_${disk}_percent\") FROM \"history\" WHERE time > now() - 2m",
           "groupBy": [
             {
               "params": [
@@ -7289,36 +7185,12 @@
               "type": "time"
             }
           ],
-          "hide": false,
-          "measurement": "history",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "SD Card  %",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "disk_/dev/mmcblk0_percent"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  10
-                ],
-                "type": "moving_average"
-              }
-            ]
-          ],
-          "tags": []
+          "select": [],
+          "tags": [],
+          "alias": "Usage %"
         }
       ],
-      "title": "SD Card %",
+      "title": "Usage %",
       "type": "gauge"
     },
     {
@@ -7392,7 +7264,8 @@
               }
             ]
           },
-          "unit": "bytes"
+          "unit": "bytes",
+          "noValue": "\u2014"
         },
         "overrides": []
       },
@@ -7402,7 +7275,7 @@
         "x": 10,
         "y": 55
       },
-      "id": 21,
+      "id": 203,
       "options": {
         "legend": {
           "calcs": [],
@@ -7419,55 +7292,17 @@
       "pluginVersion": "12.2.0",
       "targets": [
         {
-          "alias": "Total",
           "datasource": {
             "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
+            "uid": "pironman_influxdb"
           },
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "measurement": "history",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT moving_average(mean(\"cpu_0_percent\"), 10) FROM \"history\" WHERE $timeFilter GROUP BY time($__interval)",
-          "rawQuery": false,
           "refId": "Total",
+          "measurement": "history",
+          "policy": "default",
           "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "disk_/dev/mmcblk0_total"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  10
-                ],
-                "type": "moving_average"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "Used",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          },
+          "orderByTime": "ASC",
+          "rawQuery": true,
+          "query": "SELECT last(\"disk_${disk}_total\") FROM \"history\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
           "groupBy": [
             {
               "params": [
@@ -7476,40 +7311,22 @@
               "type": "time"
             }
           ],
-          "hide": false,
-          "measurement": "history",
-          "orderByTime": "ASC",
-          "policy": "default",
+          "select": [],
+          "tags": [],
+          "alias": "Total"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "pironman_influxdb"
+          },
           "refId": "Used",
+          "measurement": "history",
+          "policy": "default",
           "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "disk_/dev/mmcblk0_used"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  10
-                ],
-                "type": "moving_average"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "Available",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          },
+          "orderByTime": "ASC",
+          "rawQuery": true,
+          "query": "SELECT last(\"disk_${disk}_used\") FROM \"history\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
           "groupBy": [
             {
               "params": [
@@ -7518,950 +7335,36 @@
               "type": "time"
             }
           ],
-          "hide": false,
-          "measurement": "history",
-          "orderByTime": "ASC",
-          "policy": "default",
+          "select": [],
+          "tags": [],
+          "alias": "Used"
+        },
+        {
+          "datasource": {
+            "type": "influxdb",
+            "uid": "pironman_influxdb"
+          },
           "refId": "Available",
+          "measurement": "history",
+          "policy": "default",
           "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "disk_/dev/mmcblk0_free"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  10
-                ],
-                "type": "moving_average"
-              }
-            ]
+          "orderByTime": "ASC",
+          "rawQuery": true,
+          "query": "SELECT last(\"disk_${disk}_free\") FROM \"history\" WHERE $timeFilter GROUP BY time($__interval) fill(none)",
+          "groupBy": [
+            {
+              "params": [
+                "$__interval"
+              ],
+              "type": "time"
+            }
           ],
-          "tags": []
+          "select": [],
+          "tags": [],
+          "alias": "Available"
         }
       ],
-      "title": "SD Card Usage",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "${DS_INFLUXDB}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "#808080",
-            "mode": "thresholds"
-          },
-          "fieldMinMax": false,
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "color": "red",
-                  "index": 0,
-                  "text": "NO"
-                }
-              },
-              "type": "value"
-            },
-            {
-              "options": {
-                "from": 0.1,
-                "result": {
-                  "color": "green",
-                  "index": 1,
-                  "text": "YES"
-                },
-                "to": 1
-              },
-              "type": "range"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "transparent",
-                "value": 0
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 5,
-        "x": 0,
-        "y": 63
-      },
-      "id": 27,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "value",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.2.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          },
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            }
-          ],
-          "measurement": "history",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "mounted",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "disk_/dev/nvme0n1_mounted"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "title": "NVME SSD Mounted",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "${DS_INFLUXDB}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "fieldMinMax": false,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": 0
-              },
-              {
-                "color": "green",
-                "value": 50
-              },
-              {
-                "color": "#EAB839",
-                "value": 60
-              },
-              {
-                "color": "orange",
-                "value": 70
-              },
-              {
-                "color": "red",
-                "value": 80
-              },
-              {
-                "color": "purple",
-                "value": 90
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 5,
-        "x": 5,
-        "y": 63
-      },
-      "id": 35,
-      "options": {
-        "minVizHeight": 75,
-        "minVizWidth": 75,
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": false,
-        "sizing": "auto",
-        "text": {}
-      },
-      "pluginVersion": "12.2.0",
-      "targets": [
-        {
-          "alias": "NVME SSD %",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          },
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "measurement": "history",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "NVME SSD %",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "disk_/dev/nvme0n1_percent"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  10
-                ],
-                "type": "moving_average"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "title": "NVME SSD %",
-      "type": "gauge"
-    },
-    {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "${DS_INFLUXDB}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "red",
-            "mode": "thresholds"
-          },
-          "custom": {
-            "axisBorderShow": true,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "scheme",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "showValues": false,
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "area"
-            }
-          },
-          "fieldMinMax": false,
-          "mappings": [],
-          "thresholds": {
-            "mode": "percentage",
-            "steps": [
-              {
-                "color": "blue",
-                "value": 0
-              },
-              {
-                "color": "green",
-                "value": 50
-              },
-              {
-                "color": "orange",
-                "value": 70
-              },
-              {
-                "color": "red",
-                "value": 100
-              }
-            ]
-          },
-          "unit": "bytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 14,
-        "x": 10,
-        "y": 63
-      },
-      "id": 23,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "right",
-          "showLegend": true
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "multi",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.2.0",
-      "targets": [
-        {
-          "alias": "Total",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          },
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "measurement": "history",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT moving_average(mean(\"cpu_0_percent\"), 10) FROM \"history\" WHERE $timeFilter GROUP BY time($__interval)",
-          "rawQuery": false,
-          "refId": "Total",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "disk_/dev/nvme0n1_total"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  10
-                ],
-                "type": "moving_average"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "Used",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          },
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "measurement": "history",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "Used",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "disk_/dev/nvme0n1_used"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  10
-                ],
-                "type": "moving_average"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "Available",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          },
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "measurement": "history",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "Available",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "disk_/dev/nvme0n1_free"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  10
-                ],
-                "type": "moving_average"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "title": "NVME SSD Usage",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "${DS_INFLUXDB}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "#808080",
-            "mode": "thresholds"
-          },
-          "fieldMinMax": false,
-          "mappings": [
-            {
-              "options": {
-                "0": {
-                  "color": "red",
-                  "index": 0,
-                  "text": "NO"
-                }
-              },
-              "type": "value"
-            },
-            {
-              "options": {
-                "from": 0.1,
-                "result": {
-                  "color": "green",
-                  "index": 1,
-                  "text": "YES"
-                },
-                "to": 1
-              },
-              "type": "range"
-            }
-          ],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "transparent",
-                "value": 0
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 5,
-        "x": 0,
-        "y": 71
-      },
-      "id": 28,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "value",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.2.0",
-      "targets": [
-        {
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          },
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            }
-          ],
-          "measurement": "history",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "mounted",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "disk_/dev/sdb_mounted"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "last"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "title": "USB Disc Mounted",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "${DS_INFLUXDB}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "fieldMinMax": false,
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "blue",
-                "value": 0
-              },
-              {
-                "color": "green",
-                "value": 50
-              },
-              {
-                "color": "#EAB839",
-                "value": 60
-              },
-              {
-                "color": "orange",
-                "value": 70
-              },
-              {
-                "color": "red",
-                "value": 80
-              },
-              {
-                "color": "purple",
-                "value": 90
-              }
-            ]
-          },
-          "unit": "percent"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 5,
-        "x": 5,
-        "y": 71
-      },
-      "id": 24,
-      "options": {
-        "minVizHeight": 75,
-        "minVizWidth": 75,
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": false,
-        "sizing": "auto",
-        "text": {}
-      },
-      "pluginVersion": "12.2.0",
-      "targets": [
-        {
-          "alias": "USB Disc %",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          },
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "measurement": "history",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "USB Disc %",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "disk_/dev/sdb_percent"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  10
-                ],
-                "type": "moving_average"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "title": "USB Disc %",
-      "type": "gauge"
-    },
-    {
-      "datasource": {
-        "type": "influxdb",
-        "uid": "${DS_INFLUXDB}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "red",
-            "mode": "thresholds"
-          },
-          "custom": {
-            "axisBorderShow": true,
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "barWidthFactor": 0.6,
-            "drawStyle": "line",
-            "fillOpacity": 10,
-            "gradientMode": "scheme",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "insertNulls": false,
-            "lineInterpolation": "linear",
-            "lineStyle": {
-              "fill": "solid"
-            },
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "showValues": false,
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "area"
-            }
-          },
-          "fieldMinMax": false,
-          "mappings": [],
-          "thresholds": {
-            "mode": "percentage",
-            "steps": [
-              {
-                "color": "blue",
-                "value": 0
-              },
-              {
-                "color": "green",
-                "value": 50
-              },
-              {
-                "color": "orange",
-                "value": 70
-              },
-              {
-                "color": "red",
-                "value": 100
-              }
-            ]
-          },
-          "unit": "bytes"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 14,
-        "x": 10,
-        "y": 71
-      },
-      "id": 25,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "right",
-          "showLegend": true
-        },
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "multi",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "12.2.0",
-      "targets": [
-        {
-          "alias": "Total",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          },
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "measurement": "history",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "query": "SELECT moving_average(mean(\"cpu_0_percent\"), 10) FROM \"history\" WHERE $timeFilter GROUP BY time($__interval)",
-          "rawQuery": false,
-          "refId": "Total",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "disk_/dev/sdb_total"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  10
-                ],
-                "type": "moving_average"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "Used",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          },
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "measurement": "history",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "Used",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "disk_/dev/sdb_used"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  10
-                ],
-                "type": "moving_average"
-              }
-            ]
-          ],
-          "tags": []
-        },
-        {
-          "alias": "Available",
-          "datasource": {
-            "type": "influxdb",
-            "uid": "${DS_INFLUXDB}"
-          },
-          "groupBy": [
-            {
-              "params": [
-                "$__interval"
-              ],
-              "type": "time"
-            }
-          ],
-          "hide": false,
-          "measurement": "history",
-          "orderByTime": "ASC",
-          "policy": "default",
-          "refId": "Available",
-          "resultFormat": "time_series",
-          "select": [
-            [
-              {
-                "params": [
-                  "disk_/dev/sdb_free"
-                ],
-                "type": "field"
-              },
-              {
-                "params": [],
-                "type": "mean"
-              },
-              {
-                "params": [
-                  10
-                ],
-                "type": "moving_average"
-              }
-            ]
-          ],
-          "tags": []
-        }
-      ],
-      "title": "USB Disc Usage",
+      "title": "Usage",
       "type": "timeseries"
     },
     {
@@ -8940,6 +7843,55 @@
   ],
   "templating": {
     "list": [
+      {
+        "name": "disk",
+        "label": "Disk",
+        "type": "query",
+        "hide": 0,
+        "datasource": {
+          "type": "yesoreyeram-infinity-datasource",
+          "uid": "pironman_api"
+        },
+        "query": {
+          "infinityQuery": {
+            "columns": [],
+            "filters": [],
+            "format": "table",
+            "parser": "simple",
+            "refId": "variable",
+            "root_selector": "data",
+            "source": "url",
+            "type": "json",
+            "url": "get-disk-list",
+            "url_options": {
+              "data": "",
+              "method": "GET"
+            }
+          },
+          "query": "",
+          "queryType": "infinity"
+        },
+        "refresh": 2,
+        "regex": "",
+        "sort": 1,
+        "multi": true,
+        "includeAll": true,
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "options": [],
+        "staticOptions": [],
+        "allowCustomValue": false,
+        "skipUrlSync": false,
+        "definition": "get-disk-list"
+      },
       {
         "allowCustomValue": false,
         "current": {
